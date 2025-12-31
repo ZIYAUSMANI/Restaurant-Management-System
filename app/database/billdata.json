@@ -1,0 +1,53 @@
+[
+    {
+        "date": "29-12-2025",
+        "time": "03:49 PM",
+        "items": [
+            {
+                "id": "2",
+                "item_name": "Plain Dosa",
+                "quantity": 2,
+                "price": 60,
+                "total": 120
+            }
+        ],
+        "seat_charge": 0,
+        "subtotal": 120,
+        "gst": 6,
+        "grand_total": 126
+    },
+    {
+        "date": "29-12-2025",
+        "time": "03:49 PM",
+        "items": [
+            {
+                "id": "2",
+                "item_name": "Plain Dosa",
+                "quantity": 2,
+                "price": 60,
+                "total": 120
+            }
+        ],
+        "seat_charge": 100,
+        "subtotal": 120,
+        "gst": 6,
+        "grand_total": 226
+    },
+    {
+        "date": "29-12-2025",
+        "time": "03:50 PM",
+        "items": [
+            {
+                "id": "2",
+                "item_name": "Plain Dosa",
+                "quantity": 6,
+                "price": 60,
+                "total": 360
+            }
+        ],
+        "seat_charge": 100,
+        "subtotal": 360,
+        "gst": 18,
+        "grand_total": 478
+    }
+]

@@ -1,0 +1,92 @@
+[
+    {
+        "id": "a4fbd334",
+        "name": "ziya",
+        "email": "ziya@2008gmail.com",
+        "password": "ziya2008",
+        "address": "jodhpur",
+        "department": "manager",
+        "past_experience": "2 year",
+        "role": "admin"
+    },
+    {
+        "id": "abff5e70",
+        "name": "sadiya",
+        "email": "sadiya@gmail.com",
+        "password": "sadiya28",
+        "address": "bikanar",
+        "department": "waiter",
+        "past_experience": "1 year",
+        "role": "staff"
+    },
+    {
+        "id": "b9d48cc8",
+        "name": "ram",
+        "email": "ram@gmail.com",
+        "password": "ram123456",
+        "address": "pali",
+        "department": "waiter",
+        "past_experience": "1 year",
+        "role": "staff"
+    },
+    {
+        "id": "a509fcbe",
+        "name": "rohit",
+        "email": "rohit@gmail.com",
+        "password": "rohit2345",
+        "address": "pali",
+        "department": "waiter",
+        "past_experience": "5 years",
+        "role": "staff"
+    },
+    {
+        "id": "2f297f65",
+        "name": "aman",
+        "email": "aman@gmail.com",
+        "password": "aman12345",
+        "address": "jaipur",
+        "department": "waiter",
+        "past_experience": "1 year",
+        "role": "staff"
+    },
+    {
+        "id": "3d1b5c19",
+        "name": "riya",
+        "email": "riya@gmail.com",
+        "password": "riya12345",
+        "address": "pali",
+        "department": "waiter",
+        "past_experience": "0 year",
+        "role": "staff"
+    },
+    {
+        "id": "f12f6330",
+        "name": "wasim",
+        "email": "w@gmail.com",
+        "password": "wasim1234",
+        "address": "jodhpur",
+        "department": "waiter",
+        "past_experience": "1 year",
+        "role": "staff"
+    },
+    {
+        "id": "bdde54a3",
+        "name": "sohel",
+        "email": "s@gmail.com",
+        "password": "sohel123456",
+        "address": "jodhpur",
+        "department": "waiter",
+        "past_experience": "0 year",
+        "role": "staff"
+    },
+    {
+        "id": "58a44d08",
+        "name": "nizamuddin",
+        "email": "z@gmail.com",
+        "password": "niza123muddin",
+        "address": "jodhpur",
+        "department": "waiter",
+        "past_experience": "2 years",
+        "role": "staff"
+    }
+]

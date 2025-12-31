@@ -1,0 +1,630 @@
+[
+    {
+        "BREAKFAST": {
+            "Veg": [
+                {
+                    "id": "1",
+                    "item_name": "Idli (2 pcs)",
+                    "size": [
+                        {
+                            "name": "Half Plate",
+                            "price": 25
+                        },
+                        {
+                            "name": "Full Plate",
+                            "price": 40
+                        }
+                    ]
+                },
+                {
+                    "id": "2",
+                    "item_name": "Plain Dosa",
+                    "size": [
+                        {
+                            "name": "Half Plate",
+                            "price": 35
+                        },
+                        {
+                            "name": "Full Plate",
+                            "price": 60
+                        }
+                    ]
+                },
+                {
+                    "id": "3",
+                    "item_name": "Masala Dosa",
+                    "size": [
+                        {
+                            "name": "Half Plate",
+                            "price": 35
+                        },
+                        {
+                            "name": "Full Plate",
+                            "price": 60
+                        }
+                    ]
+                },
+                {
+                    "id": "4",
+                    "item_name": "Poha",
+                    "size": [
+                        {
+                            "name": "Half Plate",
+                            "price": 30
+                        },
+                        {
+                            "name": "Full Plate",
+                            "price": 50
+                        }
+                    ]
+                }
+            ],
+            "Non-Veg": [
+                {
+                    "id": "5",
+                    "item_name": "Egg Omelette",
+                    "size": [
+                        {
+                            "name": "Half Plate",
+                            "price": 30
+                        },
+                        {
+                            "name": "Full Plate",
+                            "price": 50
+                        }
+                    ]
+                },
+                {
+                    "id": "6",
+                    "item_name": "Bread Omelette",
+                    "size": [
+                        {
+                            "name": "Half Plate",
+                            "price": 40
+                        },
+                        {
+                            "name": "Full Plate",
+                            "price": 70
+                        }
+                    ]
+                },
+                {
+                    "id": "7",
+                    "item_name": "Boiled Eggs (2 pcs)",
+                    "size": [
+                        {
+                            "name": "Half Plate",
+                            "price": 25
+                        },
+                        {
+                            "name": "Full Plate",
+                            "price": 45
+                        }
+                    ]
+                }
+            ],
+            "Fast Food": [
+                {
+                    "id": "8",
+                    "item_name": "Veg Sandwich",
+                    "size": [
+                        {
+                            "name": "Half Plate",
+                            "price": 30
+                        },
+                        {
+                            "name": "Full Plate",
+                            "price": 60
+                        }
+                    ]
+                },
+                {
+                    "id": "9",
+                    "item_name": "Cheese Sandwich",
+                    "size": [
+                        {
+                            "name": "Half Plate",
+                            "price": 40
+                        },
+                        {
+                            "name": "Full Plate",
+                            "price": 80
+                        }
+                    ]
+                },
+                {
+                    "id": "10",
+                    "item_name": "French Fries",
+                    "size": [
+                        {
+                            "name": "Half Plate",
+                            "price": 45
+                        },
+                        {
+                            "name": "Full Plate",
+                            "price": 90
+                        }
+                    ]
+                }
+            ],
+            "Drinks": [
+                {
+                    "id": "11",
+                    "item_name": "Tea",
+                    "size": [
+                        {
+                            "name": "Half Plate",
+                            "price": 15
+                        },
+                        {
+                            "name": "Full Plate",
+                            "price": 25
+                        }
+                    ]
+                },
+                {
+                    "id": "12",
+                    "item_name": "Coffee",
+                    "size": [
+                        {
+                            "name": "Half Plate",
+                            "price": 20
+                        },
+                        {
+                            "name": "Full Plate",
+                            "price": 35
+                        }
+                    ]
+                },
+                {
+                    "id": "13",
+                    "item_name": "Milk",
+                    "size": [
+                        {
+                            "name": "Half Plate",
+                            "price": 30
+                        },
+                        {
+                            "name": "Full Plate",
+                            "price": 60
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "LUNCH": {
+            "Veg": [
+                {
+                    "id": "14",
+                    "item_name": "Veg Thali",
+                    "size": [
+                        {
+                            "name": "Half Plate",
+                            "price": 90
+                        },
+                        {
+                            "name": "Full Plate",
+                            "price": 150
+                        }
+                    ]
+                },
+                {
+                    "id": "15",
+                    "item_name": "Dal Tadka",
+                    "size": [
+                        {
+                            "name": "Half Plate",
+                            "price": 70
+                        },
+                        {
+                            "name": "Full Plate",
+                            "price": 120
+                        }
+                    ]
+                },
+                {
+                    "id": "16",
+                    "item_name": "Paneer Butter Masala",
+                    "size": [
+                        {
+                            "name": "Half Plate",
+                            "price": 110
+                        },
+                        {
+                            "name": "Full Plate",
+                            "price": 190
+                        }
+                    ]
+                },
+                {
+                    "id": "17",
+                    "item_name": "Jeera Rice",
+                    "size": [
+                        {
+                            "name": "Half Plate",
+                            "price": 65
+                        },
+                        {
+                            "name": "Full Plate",
+                            "price": 110
+                        }
+                    ]
+                }
+            ],
+            "Non-Veg": [
+                {
+                    "id": "18",
+                    "item_name": "Chicken Curry",
+                    "size": [
+                        {
+                            "name": "Half Plate",
+                            "price": 140
+                        },
+                        {
+                            "name": "Full Plate",
+                            "price": 220
+                        }
+                    ]
+                },
+                {
+                    "id": "19",
+                    "item_name": "Chicken Biryani",
+                    "size": [
+                        {
+                            "name": "Half Plate",
+                            "price": 150
+                        },
+                        {
+                            "name": "Full Plate",
+                            "price": 240
+                        }
+                    ]
+                },
+                {
+                    "id": "20",
+                    "item_name": "Egg Curry",
+                    "size": [
+                        {
+                            "name": "Half Plate",
+                            "price": 100
+                        },
+                        {
+                            "name": "Full Plate",
+                            "price": 160
+                        }
+                    ]
+                }
+            ],
+            "Roti": [
+                {
+                    "id": "21",
+                    "item_name": "Plain Roti (1 pc)",
+                    "size": [
+                        {
+                            "name": "Single",
+                            "price": 15
+                        },
+                        {
+                            "name": "Double",
+                            "price": 25
+                        }
+                    ]
+                },
+                {
+                    "id": "22",
+                    "item_name": "Butter Roti (1 pc)",
+                    "size": [
+                        {
+                            "name": "Single",
+                            "price": 20
+                        },
+                        {
+                            "name": "Double",
+                            "price": 30
+                        }
+                    ]
+                },
+                {
+                    "id": "23",
+                    "item_name": "Tandoori Roti (1 pc)",
+                    "size": [
+                        {
+                            "name": "Single",
+                            "price": 25
+                        },
+                        {
+                            "name": "Double",
+                            "price": 40
+                        }
+                    ]
+                },
+                {
+                    "id": "24",
+                    "item_name": "Garlic Roti (1 pc)",
+                    "size": [
+                        {
+                            "name": "Single",
+                            "price": 30
+                        },
+                        {
+                            "name": "Double",
+                            "price": 50
+                        }
+                    ]
+                }
+            ],
+            "Fast Food": [
+                {
+                    "id": "25",
+                    "item_name": "Veg Fried Rice",
+                    "size": [
+                        {
+                            "name": "Half Plate",
+                            "price": 80
+                        },
+                        {
+                            "name": "Full Plate",
+                            "price": 140
+                        }
+                    ]
+                },
+                {
+                    "id": "26",
+                    "item_name": "Chicken Fried Rice",
+                    "size": [
+                        {
+                            "name": "Half Plate",
+                            "price": 100
+                        },
+                        {
+                            "name": "Full Plate",
+                            "price": 170
+                        }
+                    ]
+                },
+                {
+                    "id": "27",
+                    "item_name": "Veg Noodles",
+                    "size": [
+                        {
+                            "name": "Half Plate",
+                            "price": 75
+                        },
+                        {
+                            "name": "Full Plate",
+                            "price": 130
+                        }
+                    ]
+                }
+            ],
+            "Drinks": [
+                {
+                    "id": "28",
+                    "item_name": "Butter Milk",
+                    "size": [
+                        {
+                            "name": "Half Plate",
+                            "price": 15
+                        },
+                        {
+                            "name": "Full Plate",
+                            "price": 30
+                        }
+                    ]
+                },
+                {
+                    "id": "29",
+                    "item_name": "Cold Drink",
+                    "size": [
+                        {
+                            "name": "Half Plate",
+                            "price": 20
+                        },
+                        {
+                            "name": "Full Plate",
+                            "price": 40
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "DINNER": {
+            "Veg": [
+                {
+                    "id": "31",
+                    "item_name": "Veg Biryani",
+                    "size": [
+                        {
+                            "name": "Half Plate",
+                            "price": 100
+                        },
+                        {
+                            "name": "Full Plate",
+                            "price": 180
+                        }
+                    ]
+                },
+                {
+                    "id": "32",
+                    "item_name": "Shahi Paneer",
+                    "size": [
+                        {
+                            "name": "Half Plate",
+                            "price": 120
+                        },
+                        {
+                            "name": "Full Plate",
+                            "price": 210
+                        }
+                    ]
+                }
+            ],
+            "Non-Veg": [
+                {
+                    "id": "34",
+                    "item_name": "Butter Chicken",
+                    "size": [
+                        {
+                            "name": "Half Plate",
+                            "price": 150
+                        },
+                        {
+                            "name": "Full Plate",
+                            "price": 260
+                        }
+                    ]
+                },
+                {
+                    "id": "35",
+                    "item_name": "Chicken Tikka",
+                    "size": [
+                        {
+                            "name": "Half Plate",
+                            "price": 130
+                        },
+                        {
+                            "name": "Full Plate",
+                            "price": 230
+                        }
+                    ]
+                },
+                {
+                    "id": "36",
+                    "item_name": "Mutton Curry",
+                    "size": [
+                        {
+                            "name": "Half Plate",
+                            "price": 200
+                        },
+                        {
+                            "name": "Full Plate",
+                            "price": 320
+                        }
+                    ]
+                }
+            ],
+            "Roti": [
+                {
+                    "id": "33",
+                    "item_name": "Butter Naan",
+                    "size": [
+                        {
+                            "name": "Single",
+                            "price": 40
+                        },
+                        {
+                            "name": "Double",
+                            "price": 70
+                        }
+                    ]
+                }
+            ],
+            "Fast Food": [
+                {
+                    "id": "37",
+                    "item_name": "Veg Burger",
+                    "size": [
+                        {
+                            "name": "Half Plate",
+                            "price": 45
+                        },
+                        {
+                            "name": "Full Plate",
+                            "price": 90
+                        }
+                    ]
+                },
+                {
+                    "id": "38",
+                    "item_name": "Chicken Burger",
+                    "size": [
+                        {
+                            "name": "Half Plate",
+                            "price": 60
+                        },
+                        {
+                            "name": "Full Plate",
+                            "price": 120
+                        }
+                    ]
+                },
+                {
+                    "id": "39",
+                    "item_name": "Pizza Slice",
+                    "size": [
+                        {
+                            "name": "Half Plate",
+                            "price": 50
+                        },
+                        {
+                            "name": "Full Plate",
+                            "price": 100
+                        }
+                    ]
+                }
+            ],
+            "Drinks": [
+                {
+                    "id": "30",
+                    "item_name": "Lemon Juice",
+                    "size": [
+                        {
+                            "name": "Half Plate",
+                            "price": 20
+                        },
+                        {
+                            "name": "Full Plate",
+                            "price": 35
+                        }
+                    ]
+                },
+                {
+                    "id": "40",
+                    "item_name": "Green Tea",
+                    "size": [
+                        {
+                            "name": "Half Plate",
+                            "price": 25
+                        },
+                        {
+                            "name": "Full Plate",
+                            "price": 40
+                        }
+                    ]
+                },
+                {
+                    "id": "41",
+                    "item_name": "Fresh Lime Soda",
+                    "size": [
+                        {
+                            "name": "Half Plate",
+                            "price": 30
+                        },
+                        {
+                            "name": "Full Plate",
+                            "price": 50
+                        }
+                    ]
+                },
+                {
+                    "id": "42",
+                    "item_name": "Mocktail",
+                    "size": [
+                        {
+                            "name": "Half Plate",
+                            "price": 50
+                        },
+                        {
+                            "name": "Full Plate",
+                            "price": 80
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+]

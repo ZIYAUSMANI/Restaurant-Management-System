@@ -1,0 +1,34 @@
+[
+    {
+        "booking_id": "a39f70",
+        "date": "2025-12-29",
+        "time_slot": "10:00 - 12:00",
+        "table_no": 1,
+        "seats_booked": 2,
+        "created_at": "2025-12-29T15:49:36.954522"
+    },
+    {
+        "booking_id": "12a5f1",
+        "date": "2025-12-29",
+        "time_slot": "10:00 - 12:00",
+        "table_no": 1,
+        "seats_booked": 2,
+        "created_at": "2025-12-29T15:49:59.229972"
+    },
+    {
+        "booking_id": "d50dd1",
+        "date": "2025-12-29",
+        "time_slot": "18:00 - 20:00",
+        "table_no": 3,
+        "seats_booked": 6,
+        "created_at": "2025-12-29T16:39:34.190296"
+    },
+    {
+        "booking_id": "ef51ca",
+        "date": "2025-12-29",
+        "time_slot": "12:00 - 14:00",
+        "table_no": 3,
+        "seats_booked": 6,
+        "created_at": "2025-12-29T16:41:06.238449"
+    }
+]
