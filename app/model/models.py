@@ -17,21 +17,24 @@ class PathModel:
     order_data=r"C:\indixpert\python_project\app\database\orderdata.json"
     log_data=r"C:\indixpert\python_project\app\logs\logdata.text"
 
-class FoodItemModel: 
+class FoodItemModel:
     id = None
     item_name = None
-    category = None
-    price = None
+    half_price = None
+    full_price = None
 
 class FoodCategoryModel:
+    meal_name=None 
     category_name = None
     items = None
 
 class OrderModel:
     id = None
+    item_name = None
     quantity = None
-    foodmenu=None
-
+    size_choice = None
+    
+    
 class BillItemModel:
     id = None
     item_name = None

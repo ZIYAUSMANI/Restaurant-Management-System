@@ -1,6 +1,5 @@
-from .ordermanagment import Managingorders
-from .billingsystem import Generatesbill
-from .tablebooking import Booktable
+from .ordersystem import Managingorders
+
 class Menustaff:
     @staticmethod
     def staffdasbord():
@@ -25,8 +24,6 @@ class Menustaff:
                 Managingorders.order_menu()
             elif choice == 2:
                 print("\n--- Table Booking ---")
-                table = Booktable()
-                table.run_menu()
             elif choice == 3:
                 print("Exiting Staff Dashboard. Goodbye!")
                 break

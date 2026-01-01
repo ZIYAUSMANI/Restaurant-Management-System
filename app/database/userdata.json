@@ -88,5 +88,25 @@
         "department": "waiter",
         "past_experience": "2 years",
         "role": "staff"
+    },
+    {
+        "id": "8117ee5f",
+        "name": "asu",
+        "email": "asu@gmail.com",
+        "password": "asu123456",
+        "address": "pali",
+        "department": "waiter",
+        "past_experience": "0 year",
+        "role": "staff"
+    },
+    {
+        "id": "5687a61f",
+        "name": "simran",
+        "email": "s123@gmail.com",
+        "password": "simran1234",
+        "address": "jodhpur",
+        "department": "waiter",
+        "past_experience": "0 year",
+        "role": "staff"
     }
 ]

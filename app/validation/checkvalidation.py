@@ -4,32 +4,32 @@ from ..domain.filehandler import Createfile
 from ..model.models import PathModel
 
 class Validationcheck:
-    def name_check(self, name):
+    def name_check(self, value,prompt):
         while True:
-            stripped_name = name.strip()
+            stripped_value = value.strip()
 
-            if not (3 <= len(stripped_name) <= 20):
+            if not (3 <= len(stripped_value) <= 20):
                 print("Invalid name! Length must be between 3 and 20 characters.")
-                name = input("Enter your name: ")
+                value = input(prompt)
                 continue
 
-            if stripped_name.count(" ") > 2:
+            if stripped_value.count(" ") > 2:
                 print("Invalid name! Only up to 2 spaces are allowed.")
-                name = input("Enter your name: ")
+                value = input(prompt)
                 continue
 
-            if not stripped_name.replace(" ", "").isalpha():
+            if not stripped_value.replace(" ", "").isalpha():
                 print("Invalid name! Name should contain only letters.")
-                name = input("Enter your name: ")
+                value = input(prompt)
                 continue
 
-            letters_only = stripped_name.replace(" ", "").lower()
+            letters_only = stripped_value.replace(" ", "").lower()
             if len(set(letters_only)) == 1:
                 print("Invalid name! Name cannot contain the same letter repeatedly.")
-                name = input("Enter your name: ")
+                value = input(prompt)
                 continue
 
-            return stripped_name
+            return stripped_value
 
     def email_check(self, email):
         pattern = r'[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.(com|in|net|org|edu)$'
@@ -133,26 +133,28 @@ class Validationcheck:
             print("Invalid past experience!")
             pastexperience = input("Enter your past experience (e.g., 2 year): ")
 
-    def id_chcek(self,id):
-        food=Createfile(PathModel.food_data)
-        food_menu=food.file()
-        last_id=int(food_menu["DINNER"][-1]["id"])
+    def get_valid_order_id(self,order_id):
+        order_id_input = str(order_id).strip()
+        while(True):
+            if not order_id_input.isdigit() or int(order_id_input) < 101:
+                print("invalide id!order id start with 101")
+                order_id=input("Enter ID of the order you want to delete: ")
+                
+            return order_id
+            
+    def quantity_chcek(self, quantity):
         while True:
-            id_chcek=id.isdigit() 
-            if id_chcek==False or int(id)>last_id or int(id)<=0:
-                print(f"Invalid id! id should have only digit and there are only {last_id} items.")
-                id=input("\nenter the id of item =")
-            else:
-                return id
-    def quantity_chcek(self,quantity):
-        while True:
-            quantity_chcek=quantity.isdigit() 
-            if quantity_chcek==False or int(quantity)>=11:
+            if not quantity.isdigit():
                 print("Invalid quantity! quantity should be written in only digit and stock is upto 10 only.")
-                quantity=input("\nEnter your quantity =")
+            elif int(quantity) <= 0:
+                print("Invalid quantity! quantity must be greater than 0.")
+            elif int(quantity) > 10:
+                print("Invalid quantity! quantity should be maximum 10 only.")
             else:
                 return quantity
-            
+
+            quantity = input("\nEnter your quantity = ")
+
     def category_check(self, category):
         allowed = ["Veg", "Non_Veg", "Fast Food", "Drink", "Roti"]
 
@@ -167,9 +169,30 @@ class Validationcheck:
                 category = input("enter category of item = ")
 
         
-    def price_check(self, price):
+    def price_check(self, price,prompt):
         while True:
             if price.isdigit() and int(price) > 0:
                 return int(price)
             print("Invalid price! Enter a positive number.")
-            price = input("enter the price of item = ")
+            price = input(prompt)
+
+    def size_check(self, size, item_category):
+        while True:
+            size_input = size.strip().title()
+
+            if item_category == "roti":
+                allowed_sizes = ["Single", "Double"]
+                message = "Invalid size! Please enter one of: Single, Double."
+                prompt = "Enter size (Single / Double): "
+            else:
+                allowed_sizes = ["Half", "Full"]
+                message = "Invalid size! Please enter one of: Half , Full ."
+                prompt = "Enter size (Half  / Full ): "
+
+            if size_input.isnumeric() or size_input not in allowed_sizes:
+                print(message)
+                size = input(prompt)
+            else:
+                return size_input
+
+                    

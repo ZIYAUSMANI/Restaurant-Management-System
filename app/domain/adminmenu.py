@@ -1,4 +1,5 @@
 from ..menu.menusystem import Menumanagment
+from ..domain.ordermanagment import Ordermanaingsystem
 class Menuadmin:
     @staticmethod
     def admindasbord():
@@ -7,7 +8,7 @@ class Menuadmin:
             print("           ADMIN MAIN DASHBOARD")
             print("="*45)
             print("1. Menu Management")
-            print("2. Staff Management")
+            print("2. order Management")
             print("3. Inventory Management")
             print("4. Report System")
             print("5. Exit")
@@ -23,7 +24,8 @@ class Menuadmin:
                 print("\n--- Menu Management ---")
                 Menumanagment.manage_menu()
             elif choice == 2:
-                print("\n--- Staff Management ---")
+                print("\n--- order Management ---")
+                Ordermanaingsystem.order_managment()
             elif choice == 3:
                 print("\n--- Inventory Management ---")
             elif choice == 4:

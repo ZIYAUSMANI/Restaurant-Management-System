@@ -6,7 +6,6 @@ from ..model.models import FoodCategoryModel
 
 class Managingfoodmenu:
     categories = []
-
     @classmethod
     def convert_food_data_to_model(cls, food_data):
         cls.categories = []
@@ -14,7 +13,9 @@ class Managingfoodmenu:
         for meal_dict in food_data:
             for meal_name, categories_dict in meal_dict.items():
                 for cat_name, items_list in categories_dict.items():
+
                     category = FoodCategoryModel()
+                    category.meal_name = meal_name
                     category.category_name = cat_name
                     category.items = []
 
@@ -22,15 +23,19 @@ class Managingfoodmenu:
                         food = FoodItemModel()
                         food.id = item["id"]
                         food.item_name = item["item_name"]
-                        food.category = cat_name
 
-                        if "size" in item:
-                            food.size = item["size"]
-                        elif "price" in item:
-                            food.size = [{"name": "Full Plate", "price": item["price"]}]
-                        else:
-                            food.size = [{"name": "Full Plate", "price": 0}]
+                        
+                        food.half_price = "-"
+                        food.full_price = "-"
 
+                        for size in item.get("size", []):
+                            size_name = size["name"].lower()
+                            price = size["price"]
+
+                            if "half" in size_name or "single" in size_name:
+                                    food.half_price = price
+                            elif "full" in size_name or "double" in size_name:
+                                    food.full_price = price
                         category.items.append(food)
 
                     cls.categories.append(category)
@@ -47,22 +52,29 @@ class Managingfoodmenu:
         print("|======================== FOOD MENU =========================|")
         print("|------------------------------------------------------------|")
 
+        last_meal = None
+
         for category in Managingfoodmenu.categories:
-            print(f"\n|  {category.category_name:<50}|")
+
+            if category.meal_name != last_meal:
+                print(f"\n|{'='*((60 - len(category.meal_name) - 2)//2)} {category.meal_name.upper()} {'='*((60 - len(category.meal_name) - 2)//2 + (60 - len(category.meal_name) - 2)%2)}|")
+                print("|------------------------------------------------------------|")
+                last_meal = category.meal_name
+
+            print(f"|>>> {category.category_name:<56}|")
             print("|------------------------------------------------------------|")
-            print(f"|{'ID':<5}{'Item Name':<30}{'Half Price':<12}{'Full Price':<12}|")
+
+            if category.category_name.lower() == "roti":
+               print(f"|{'ID':<5}{'Item Name':<27}{'Single Price':<15}{'Double Price':<12} |")
+            else:
+                print(f"|{'ID':<5}{'Item Name':<27}{'Half Price':<15}{'Full Price':<12} |")
+
             print("|------------------------------------------------------------|")
 
             for food in category.items:
-                half_price = ""
-                full_price = ""
-                for s in food.size:
-                    if s["name"].lower() == "half plate":
-                        half_price = f"{s['price']} ₹"
-                    elif s["name"].lower() == "full plate":
-                        full_price = f"{s['price']} ₹"
-                    else:
-                        full_price = f"{s['price']} ₹"
+                print(
+                    f"|{food.id:<5}{food.item_name:<30}"
+                    f"{str(food.half_price) + ' ₹':<15}{str(food.full_price) + ' ₹':<9} |"
+                )
 
-                print(f"|{food.id:<5}{food.item_name:<30}{half_price:<12}{full_price:<12}|")
             print("|------------------------------------------------------------|")

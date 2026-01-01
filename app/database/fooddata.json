@@ -7,11 +7,11 @@
                     "item_name": "Idli (2 pcs)",
                     "size": [
                         {
-                            "name": "Half Plate",
+                            "name": "Half",
                             "price": 25
                         },
                         {
-                            "name": "Full Plate",
+                            "name": "Full",
                             "price": 40
                         }
                     ]
@@ -21,11 +21,11 @@
                     "item_name": "Plain Dosa",
                     "size": [
                         {
-                            "name": "Half Plate",
+                            "name": "Half",
                             "price": 35
                         },
                         {
-                            "name": "Full Plate",
+                            "name": "Full",
                             "price": 60
                         }
                     ]
@@ -35,26 +35,26 @@
                     "item_name": "Masala Dosa",
                     "size": [
                         {
-                            "name": "Half Plate",
+                            "name": "Half",
                             "price": 35
                         },
                         {
-                            "name": "Full Plate",
+                            "name": "Full",
                             "price": 60
                         }
                     ]
                 },
                 {
                     "id": "4",
-                    "item_name": "Poha",
+                    "item_name": "Masala Poha",
                     "size": [
                         {
-                            "name": "Half Plate",
+                            "name": "Half",
                             "price": 30
                         },
                         {
-                            "name": "Full Plate",
-                            "price": 50
+                            "name": "Full",
+                            "price": 40
                         }
                     ]
                 }
@@ -65,11 +65,11 @@
                     "item_name": "Egg Omelette",
                     "size": [
                         {
-                            "name": "Half Plate",
+                            "name": "Half",
                             "price": 30
                         },
                         {
-                            "name": "Full Plate",
+                            "name": "Full",
                             "price": 50
                         }
                     ]
@@ -79,11 +79,11 @@
                     "item_name": "Bread Omelette",
                     "size": [
                         {
-                            "name": "Half Plate",
+                            "name": "Half",
                             "price": 40
                         },
                         {
-                            "name": "Full Plate",
+                            "name": "Full",
                             "price": 70
                         }
                     ]
@@ -93,11 +93,11 @@
                     "item_name": "Boiled Eggs (2 pcs)",
                     "size": [
                         {
-                            "name": "Half Plate",
+                            "name": "Half",
                             "price": 25
                         },
                         {
-                            "name": "Full Plate",
+                            "name": "Full",
                             "price": 45
                         }
                     ]
@@ -109,11 +109,11 @@
                     "item_name": "Veg Sandwich",
                     "size": [
                         {
-                            "name": "Half Plate",
+                            "name": "Half",
                             "price": 30
                         },
                         {
-                            "name": "Full Plate",
+                            "name": "Full",
                             "price": 60
                         }
                     ]
@@ -123,11 +123,11 @@
                     "item_name": "Cheese Sandwich",
                     "size": [
                         {
-                            "name": "Half Plate",
+                            "name": "Half",
                             "price": 40
                         },
                         {
-                            "name": "Full Plate",
+                            "name": "Full",
                             "price": 80
                         }
                     ]
@@ -137,11 +137,11 @@
                     "item_name": "French Fries",
                     "size": [
                         {
-                            "name": "Half Plate",
+                            "name": "Half",
                             "price": 45
                         },
                         {
-                            "name": "Full Plate",
+                            "name": "Full",
                             "price": 90
                         }
                     ]
@@ -153,11 +153,11 @@
                     "item_name": "Tea",
                     "size": [
                         {
-                            "name": "Half Plate",
+                            "name": "Half",
                             "price": 15
                         },
                         {
-                            "name": "Full Plate",
+                            "name": "Full",
                             "price": 25
                         }
                     ]
@@ -167,11 +167,11 @@
                     "item_name": "Coffee",
                     "size": [
                         {
-                            "name": "Half Plate",
+                            "name": "Half",
                             "price": 20
                         },
                         {
-                            "name": "Full Plate",
+                            "name": "Full",
                             "price": 35
                         }
                     ]
@@ -181,11 +181,11 @@
                     "item_name": "Milk",
                     "size": [
                         {
-                            "name": "Half Plate",
+                            "name": "Half",
                             "price": 30
                         },
                         {
-                            "name": "Full Plate",
+                            "name": "Full",
                             "price": 60
                         }
                     ]
@@ -201,11 +201,11 @@
                     "item_name": "Veg Thali",
                     "size": [
                         {
-                            "name": "Half Plate",
+                            "name": "Half",
                             "price": 90
                         },
                         {
-                            "name": "Full Plate",
+                            "name": "Full",
                             "price": 150
                         }
                     ]
@@ -215,11 +215,11 @@
                     "item_name": "Dal Tadka",
                     "size": [
                         {
-                            "name": "Half Plate",
+                            "name": "Half",
                             "price": 70
                         },
                         {
-                            "name": "Full Plate",
+                            "name": "Full",
                             "price": 120
                         }
                     ]
@@ -229,11 +229,11 @@
                     "item_name": "Paneer Butter Masala",
                     "size": [
                         {
-                            "name": "Half Plate",
+                            "name": "Half",
                             "price": 110
                         },
                         {
-                            "name": "Full Plate",
+                            "name": "Full",
                             "price": 190
                         }
                     ]
@@ -243,11 +243,11 @@
                     "item_name": "Jeera Rice",
                     "size": [
                         {
-                            "name": "Half Plate",
+                            "name": "Half",
                             "price": 65
                         },
                         {
-                            "name": "Full Plate",
+                            "name": "Full",
                             "price": 110
                         }
                     ]
@@ -259,11 +259,11 @@
                     "item_name": "Chicken Curry",
                     "size": [
                         {
-                            "name": "Half Plate",
+                            "name": "Half",
                             "price": 140
                         },
                         {
-                            "name": "Full Plate",
+                            "name": "Full",
                             "price": 220
                         }
                     ]
@@ -273,11 +273,11 @@
                     "item_name": "Chicken Biryani",
                     "size": [
                         {
-                            "name": "Half Plate",
+                            "name": "Half",
                             "price": 150
                         },
                         {
-                            "name": "Full Plate",
+                            "name": "Full",
                             "price": 240
                         }
                     ]
@@ -287,11 +287,11 @@
                     "item_name": "Egg Curry",
                     "size": [
                         {
-                            "name": "Half Plate",
+                            "name": "Half",
                             "price": 100
                         },
                         {
-                            "name": "Full Plate",
+                            "name": "Full",
                             "price": 160
                         }
                     ]
@@ -300,7 +300,7 @@
             "Roti": [
                 {
                     "id": "21",
-                    "item_name": "Plain Roti (1 pc)",
+                    "item_name": "Plain Roti",
                     "size": [
                         {
                             "name": "Single",
@@ -314,7 +314,7 @@
                 },
                 {
                     "id": "22",
-                    "item_name": "Butter Roti (1 pc)",
+                    "item_name": "Butter Roti",
                     "size": [
                         {
                             "name": "Single",
@@ -328,7 +328,7 @@
                 },
                 {
                     "id": "23",
-                    "item_name": "Tandoori Roti (1 pc)",
+                    "item_name": "Tandoori Roti",
                     "size": [
                         {
                             "name": "Single",
@@ -342,7 +342,7 @@
                 },
                 {
                     "id": "24",
-                    "item_name": "Garlic Roti (1 pc)",
+                    "item_name": "Garlic Roti",
                     "size": [
                         {
                             "name": "Single",
@@ -361,11 +361,11 @@
                     "item_name": "Veg Fried Rice",
                     "size": [
                         {
-                            "name": "Half Plate",
+                            "name": "Half",
                             "price": 80
                         },
                         {
-                            "name": "Full Plate",
+                            "name": "Full",
                             "price": 140
                         }
                     ]
@@ -375,11 +375,11 @@
                     "item_name": "Chicken Fried Rice",
                     "size": [
                         {
-                            "name": "Half Plate",
+                            "name": "Half",
                             "price": 100
                         },
                         {
-                            "name": "Full Plate",
+                            "name": "Full",
                             "price": 170
                         }
                     ]
@@ -389,11 +389,11 @@
                     "item_name": "Veg Noodles",
                     "size": [
                         {
-                            "name": "Half Plate",
+                            "name": "Half",
                             "price": 75
                         },
                         {
-                            "name": "Full Plate",
+                            "name": "Full",
                             "price": 130
                         }
                     ]
@@ -405,11 +405,11 @@
                     "item_name": "Butter Milk",
                     "size": [
                         {
-                            "name": "Half Plate",
+                            "name": "Half",
                             "price": 15
                         },
                         {
-                            "name": "Full Plate",
+                            "name": "Full",
                             "price": 30
                         }
                     ]
@@ -419,11 +419,11 @@
                     "item_name": "Cold Drink",
                     "size": [
                         {
-                            "name": "Half Plate",
+                            "name": "Half",
                             "price": 20
                         },
                         {
-                            "name": "Full Plate",
+                            "name": "Full",
                             "price": 40
                         }
                     ]
@@ -435,29 +435,29 @@
         "DINNER": {
             "Veg": [
                 {
-                    "id": "31",
+                    "id": "30",
                     "item_name": "Veg Biryani",
                     "size": [
                         {
-                            "name": "Half Plate",
+                            "name": "Half",
                             "price": 100
                         },
                         {
-                            "name": "Full Plate",
+                            "name": "Full",
                             "price": 180
                         }
                     ]
                 },
                 {
-                    "id": "32",
+                    "id": "31",
                     "item_name": "Shahi Paneer",
                     "size": [
                         {
-                            "name": "Half Plate",
+                            "name": "Half",
                             "price": 120
                         },
                         {
-                            "name": "Full Plate",
+                            "name": "Full",
                             "price": 210
                         }
                     ]
@@ -465,43 +465,43 @@
             ],
             "Non-Veg": [
                 {
-                    "id": "34",
+                    "id": "32",
                     "item_name": "Butter Chicken",
                     "size": [
                         {
-                            "name": "Half Plate",
+                            "name": "Half",
                             "price": 150
                         },
                         {
-                            "name": "Full Plate",
+                            "name": "Full",
                             "price": 260
                         }
                     ]
                 },
                 {
-                    "id": "35",
+                    "id": "33",
                     "item_name": "Chicken Tikka",
                     "size": [
                         {
-                            "name": "Half Plate",
+                            "name": "Half",
                             "price": 130
                         },
                         {
-                            "name": "Full Plate",
+                            "name": "Full",
                             "price": 230
                         }
                     ]
                 },
                 {
-                    "id": "36",
+                    "id": "34",
                     "item_name": "Mutton Curry",
                     "size": [
                         {
-                            "name": "Half Plate",
+                            "name": "Half",
                             "price": 200
                         },
                         {
-                            "name": "Full Plate",
+                            "name": "Full",
                             "price": 320
                         }
                     ]
@@ -509,7 +509,7 @@
             ],
             "Roti": [
                 {
-                    "id": "33",
+                    "id": "35",
                     "item_name": "Butter Naan",
                     "size": [
                         {
@@ -525,43 +525,43 @@
             ],
             "Fast Food": [
                 {
-                    "id": "37",
+                    "id": "36",
                     "item_name": "Veg Burger",
                     "size": [
                         {
-                            "name": "Half Plate",
+                            "name": "Half",
                             "price": 45
                         },
                         {
-                            "name": "Full Plate",
+                            "name": "Full",
                             "price": 90
                         }
                     ]
                 },
                 {
-                    "id": "38",
+                    "id": "37",
                     "item_name": "Chicken Burger",
                     "size": [
                         {
-                            "name": "Half Plate",
+                            "name": "Half",
                             "price": 60
                         },
                         {
-                            "name": "Full Plate",
+                            "name": "Full",
                             "price": 120
                         }
                     ]
                 },
                 {
-                    "id": "39",
+                    "id": "38",
                     "item_name": "Pizza Slice",
                     "size": [
                         {
-                            "name": "Half Plate",
+                            "name": "Half",
                             "price": 50
                         },
                         {
-                            "name": "Full Plate",
+                            "name": "Full",
                             "price": 100
                         }
                     ]
@@ -569,15 +569,15 @@
             ],
             "Drinks": [
                 {
-                    "id": "30",
+                    "id": "39",
                     "item_name": "Lemon Juice",
                     "size": [
                         {
-                            "name": "Half Plate",
+                            "name": "Half",
                             "price": 20
                         },
                         {
-                            "name": "Full Plate",
+                            "name": "Full",
                             "price": 35
                         }
                     ]
@@ -587,11 +587,11 @@
                     "item_name": "Green Tea",
                     "size": [
                         {
-                            "name": "Half Plate",
+                            "name": "Half",
                             "price": 25
                         },
                         {
-                            "name": "Full Plate",
+                            "name": "Full",
                             "price": 40
                         }
                     ]
@@ -601,11 +601,11 @@
                     "item_name": "Fresh Lime Soda",
                     "size": [
                         {
-                            "name": "Half Plate",
+                            "name": "Half",
                             "price": 30
                         },
                         {
-                            "name": "Full Plate",
+                            "name": "Full",
                             "price": 50
                         }
                     ]
@@ -615,11 +615,11 @@
                     "item_name": "Mocktail",
                     "size": [
                         {
-                            "name": "Half Plate",
+                            "name": "Half",
                             "price": 50
                         },
                         {
-                            "name": "Full Plate",
+                            "name": "Full",
                             "price": 80
                         }
                     ]

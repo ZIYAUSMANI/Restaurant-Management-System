@@ -29,7 +29,7 @@ class UserAuthentication:
 
         try:
             user.id = uuid.uuid4().hex[:8]
-            user.name = validetion_check.name_check(input("Enter your user name: "))
+            user.name = validetion_check.name_check(input("Enter your user name: "),"Enter your user name: ")
             user.email = validetion_check.email_exit(
                 validetion_check.email_check(input("Enter your email: "))
             )
