@@ -1,110 +1,116 @@
 [
     {
-        "id": "a4fbd334",
+        "id": "3f5a1c2b",
         "name": "ziya",
         "email": "ziya@2008gmail.com",
         "password": "ziya2008",
         "address": "jodhpur",
-        "department": "manager",
-        "past_experience": "2 year",
+        "department": "Administration",
+        "past_experience": [
+            {
+                "company_name": "GlobalTech",
+                "experience": "5 year"
+            },
+            {
+                "company_name": "TechSolutions",
+                "experience": "2 year 4 month"
+            },
+            {
+                "company_name": "InnovateX",
+                "experience": "3 year 6 month"
+            }
+        ],
         "role": "admin"
     },
     {
-        "id": "abff5e70",
+        "id": "a1b2c3d4",
+        "name": "Alice",
+        "email": "alice@gmail.com",
+        "password": "alice1234",
+        "address": "jaipur",
+        "department": "IT",
+        "past_experience": [
+            {
+                "company_name": "TCS",
+                "experience": "3 year 2 month"
+            },
+            {
+                "company_name": "Infosys",
+                "experience": "1 year"
+            }
+        ],
+        "role": "staff"
+    },
+    {
+        "id": "b2c3d4e5",
+        "name": "Bob",
+        "email": "bob@gmail.com",
+        "password": "bob2222228",
+        "address": "pali",
+        "department": "HR",
+        "past_experience": [
+            {
+                "company_name": "Wipro",
+                "experience": "2 year 5 month"
+            }
+        ],
+        "role": "staff"
+    },
+    {
+        "id": "c3d4e5f6",
+        "name": "Charlie",
+        "email": "charlie@gmail.com",
+        "password": "charlie242424",
+        "address": "jodhpur",
+        "department": "Finance",
+        "past_experience": [
+            {
+                "company_name": "Capgemini",
+                "experience": "4 year"
+            }
+        ],
+        "role": "staff"
+    },
+    {
+        "id": "d4e5f6g7",
+        "name": "David",
+        "email": "david@gmail.com",
+        "password": "david23234",
+        "address": "pali",
+        "department": "Marketing",
+        "past_experience": [
+            {
+                "company_name": "HCL",
+                "experience": "1 year 3 month"
+            },
+            {
+                "company_name": "TechMahindra",
+                "experience": "2 year"
+            }
+        ],
+        "role": "staff"
+    },
+    {
+        "id": "e5f6g7h8",
+        "name": "Eve",
+        "email": "eve@gmail.com",
+        "password": "eve23eve",
+        "address": "pali",
+        "department": "IT",
+        "past_experience": [
+            {
+                "company_name": "Infosys",
+                "experience": "3 year 6 month"
+            }
+        ],
+        "role": "staff"
+    },
+    {
+        "id": "a32526dc",
         "name": "sadiya",
         "email": "sadiya@gmail.com",
         "password": "sadiya28",
         "address": "bikanar",
-        "department": "waiter",
-        "past_experience": "1 year",
-        "role": "staff"
-    },
-    {
-        "id": "b9d48cc8",
-        "name": "ram",
-        "email": "ram@gmail.com",
-        "password": "ram123456",
-        "address": "pali",
-        "department": "waiter",
-        "past_experience": "1 year",
-        "role": "staff"
-    },
-    {
-        "id": "a509fcbe",
-        "name": "rohit",
-        "email": "rohit@gmail.com",
-        "password": "rohit2345",
-        "address": "pali",
-        "department": "waiter",
-        "past_experience": "5 years",
-        "role": "staff"
-    },
-    {
-        "id": "2f297f65",
-        "name": "aman",
-        "email": "aman@gmail.com",
-        "password": "aman12345",
-        "address": "jaipur",
-        "department": "waiter",
-        "past_experience": "1 year",
-        "role": "staff"
-    },
-    {
-        "id": "3d1b5c19",
-        "name": "riya",
-        "email": "riya@gmail.com",
-        "password": "riya12345",
-        "address": "pali",
-        "department": "waiter",
-        "past_experience": "0 year",
-        "role": "staff"
-    },
-    {
-        "id": "f12f6330",
-        "name": "wasim",
-        "email": "w@gmail.com",
-        "password": "wasim1234",
-        "address": "jodhpur",
-        "department": "waiter",
-        "past_experience": "1 year",
-        "role": "staff"
-    },
-    {
-        "id": "bdde54a3",
-        "name": "sohel",
-        "email": "s@gmail.com",
-        "password": "sohel123456",
-        "address": "jodhpur",
-        "department": "waiter",
-        "past_experience": "0 year",
-        "role": "staff"
-    },
-    {
-        "id": "58a44d08",
-        "name": "nizamuddin",
-        "email": "z@gmail.com",
-        "password": "niza123muddin",
-        "address": "jodhpur",
-        "department": "waiter",
-        "past_experience": "2 years",
-        "role": "staff"
-    },
-    {
-        "id": "8117ee5f",
-        "name": "asu",
-        "email": "asu@gmail.com",
-        "password": "asu123456",
-        "address": "pali",
-        "department": "waiter",
-        "past_experience": "0 year",
-        "role": "staff"
-    },
-    {
-        "id": "5687a61f",
-        "name": "simran",
-        "email": "s123@gmail.com",
-        "password": "simran1234",
-        "address": "jodhpur",
         "department": "waiter",
         "past_experience": "0 year",
         "role": "staff"

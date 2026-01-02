@@ -1,0 +1,3 @@
+2025-12-31 11:56:47,881 | ERROR | LOGIN FAILED AFTER VALID INPUT | Email: ziya@2008gmail.com | Error: type object 'Managingfoodmenu' has no attribute 'show_food_menu'
+2026-01-02 19:12:55,275 | ERROR | authentication | LOGIN FAILED AFTER VALID INPUT | Email: sadiya@gmail.com | Error: 'utf-8' codec can't decode byte 0xe0 in position 0: unexpected end of data
+2026-01-02 19:14:52,955 | ERROR | authentication | LOGIN FAILED AFTER VALID INPUT | Email: sadiya@gmail.com | Error: type object 'Managingorders' has no attribute 'order'

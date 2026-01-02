@@ -2,6 +2,7 @@ import re
 import msvcrt
 from ..domain.filehandler import Createfile
 from ..model.models import PathModel
+from datetime import datetime
 
 class Validationcheck:
     def name_check(self, value,prompt):
@@ -31,6 +32,7 @@ class Validationcheck:
 
             return stripped_value
 
+
     def email_check(self, email):
         pattern = r'[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.(com|in|net|org|edu)$'
         while True:
@@ -41,16 +43,22 @@ class Validationcheck:
                 email = input("Enter your email: ")
 
 
-    def email_exit(self, email):
+    def email_exit(self,email):
         ob = Createfile(PathModel.registration_data)
         data = ob.file()
-        for i in data:
-            if i.get("email") == email:
-                print("Email already exists!")
-                email = input("\nEnter your email: ")
-                email = self.email_check(email)
+        email = self.email_check(email)
+        while True:
+            email_found = False
+            for i in data:
+                if i.get("email") == email:
+                    print("Email already exists!")
+                    email = input("\nEnter your email: ")
+                    email = self.email_check(email)
+                    email_found = True
+                    break
+                    
+            if not email_found:
                 return email
-        return email
 
     def address_check(self, address):
         while True:
@@ -71,7 +79,8 @@ class Validationcheck:
                 return password
 
 
-    def password_exit(self, password):
+    def password_exit(self,password):
+        password = self.password_check(password)
         ob = Createfile(PathModel.registration_data)
         data = ob.file()
         for i in data:
@@ -132,6 +141,30 @@ class Validationcheck:
             
             print("Invalid past experience!")
             pastexperience = input("Enter your past experience (e.g., 2 year): ")
+
+    def date_check(self,date_value):
+        """
+        Validates date input in YYYY-MM-DD format.
+        Accepts only years between 2000 and current year.
+        """
+        min_year = 2000
+        max_year = datetime.now().year
+
+        while True:
+            try:
+                date_obj = datetime.strptime(date_value, "%Y-%m-%d")
+
+                if date_obj.year < min_year or date_obj.year > max_year:
+                    print(f"Year must be between {min_year} and {max_year}")
+                    date_value = input()
+                    continue
+
+                return date_obj
+
+            except ValueError:
+                print("Invalid date format! Use YYYY-MM-DD")
+                date_value = input()
+
 
     def get_valid_order_id(self,order_id):
         order_id_input = str(order_id).strip()

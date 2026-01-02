@@ -7,6 +7,10 @@ class UserModel:
     department = None
     past_experience = None
     role = None
+    
+class DefaultModel:
+    admin = "admin"
+    staff = "staff"
 
 class PathModel:
     registration_data=r"C:\indixpert\python_project\app\database\userdata.json" 
@@ -15,7 +19,7 @@ class PathModel:
     table_booked=r"C:\indixpert\python_project\app\database\tablebooking.json"
     bill_data=r"C:\indixpert\python_project\app\database\billdata.json"
     order_data=r"C:\indixpert\python_project\app\database\orderdata.json"
-    log_data=r"C:\indixpert\python_project\app\logs\logdata.text"
+    athu_log=r"C:\indixpert\python_project\app\logs\logsofauthentication.text"
 
 class FoodItemModel:
     id = None
