@@ -2,13 +2,25 @@ from ..domain.billingsystem import Createfile
 from ..model.models import PathModel, FoodItemModel
 from ..validation.checkvalidation import Validationcheck
 from .foodmenu import Managingfoodmenu
-from ..logs.logger import logger
+from ..logs.logger import get_logger
 
+menu_logger = get_logger(PathModel.menu_log, "menusystem")
 
 class Menumanagment:
+    """
+    Handles complete menu management operations.
 
+     Uses the following classes:
+    - Createfile: Handles reading/writing JSON or file data.
+    - Validetioncheck: Validates all user inputs like item name, price, quantity etc.
+    - PathModel: Stores file paths for data storage .
+    - FoodItemModel: Access food items model
+    - Managingfoodmenu: Access show menu method.
+    - logger: To handle unexpected errors 
+    """
     @staticmethod
     def manage_menu():
+        """ Displays the main menu management screen. """
         try:
             while True:
                 print("=========== Menu Management ===========")
@@ -32,12 +44,14 @@ class Menumanagment:
                     break
                 else:
                     print("Invalid choice! Please select between 1 to 5.")
-        except Exception:
-            logger.exception("Unhandled error in manage_menu")
-            print("Something went wrong! Please contact admin.")
+        except Exception as e:
+           menu_logger.exception(
+            f"UNEXPECTED ERROR IN manage_menu | Error: {e}")
+           print("There is an issue. Please try again after some time.")
 
     @staticmethod
     def _choose_meal(action):
+        """Allows the user to select a meal type."""
         try:
             while True:
                 print(f"\n=========== {action.title()} item ===========")
@@ -62,12 +76,42 @@ class Menumanagment:
                     break
                 else:
                     print("Invalid choice!")
-        except Exception:
-            logger.exception("Unhandled error in _choose_meal")
-            print("Unexpected error occurred!")
+        except Exception as e:
+           menu_logger.exception(
+            f"UNEXPECTED ERROR IN choose meal | Error: {e}")
+           print("There is an issue. Please try again after some time.")
+
+
+    @staticmethod
+    def _choose_category(meal_data):
+        """
+        Displays available categories for the selected meal."""
+        try:
+            categories = list(meal_data.keys())
+
+            while True:
+                for i, cat in enumerate(categories, 1):
+                    print(f"{i}. {cat}")
+                try:
+                    cat_choice = int(input("Enter category number = "))
+                    if not 1 <= cat_choice <= len(categories):
+                        print("Invalid choice!")
+                        continue
+                    category_name = categories[cat_choice - 1]
+                    return category_name, meal_data[category_name]
+                except ValueError:
+                    print("Invalid input!")
+        except Exception as e:
+           menu_logger.exception(
+            f"UNEXPECTED ERROR IN choose category | StaffEmail={Menumanagment.staff_email}| Error: {e}")
+           print("There is an issue. Please try again after some time.")
+
+
 
     @staticmethod
     def add_item(meal_type):
+        """
+        Adds a new food item to the selected meal and category."""
         try:
             food_menu = Createfile(PathModel.food_data).file()
             check = Validationcheck()
@@ -77,26 +121,9 @@ class Menumanagment:
                     meal_data = data[meal_type]
                     break
 
-            categories = list(meal_data.keys())
+            category_name, category_list = Menumanagment._choose_category(meal_data)
 
-            while True:
-                for i, cat in enumerate(categories, 1):
-                    print(f"{i}. {cat}")
-                try:
-                    cat_choice = int(input("Enter category number = "))
-                    if not 1 <= cat_choice <= len(categories):
-                        print("Invalid choice! Select a valid category.")
-                        continue
-                    category_name = categories[cat_choice - 1]
-                    break
-                except ValueError:
-                    print("Invalid input! Only numbers are allowed.")
-
-            category_list = meal_data[category_name]
-
-            item_name = check.name_check(
-                input("Enter item name = "), "Enter item name = "
-            ).title()
+            item_name = check.name_check(input("Enter item name = "), "Enter item name = ").title()
 
             for item in category_list:
                 if item["item_name"].lower() == item_name.lower():
@@ -125,8 +152,8 @@ class Menumanagment:
                 full = check.price_check(
                     input("Enter Full price = "), "Enter Full price = "
                 )
-                sizes.append({"name": "Half Plate", "price": half})
-                sizes.append({"name": "Full Plate", "price": full})
+                sizes.append({"name": "Half", "price": half})
+                sizes.append({"name": "Full", "price": full})
 
             item.size = sizes
 
@@ -135,12 +162,16 @@ class Menumanagment:
             Createfile(PathModel.food_data).write_in_file(food_menu)
             print(f"{item_name} added successfully!")
 
-        except Exception:
-            logger.exception("Unhandled error in add_item")
-            print("Failed to add item!")
+        except Exception as e:
+           menu_logger.exception(
+            f"UNEXPECTED ERROR IN add_item in manage_menu | Error: {e}")
+           print("There is an issue. Please try again after some time.")
+
             
     @staticmethod
     def delete_item(meal_type):
+        """
+        Deletes a food item from the selected meal and category."""
         try:
             food_menu = Createfile(PathModel.food_data).file()
             check = Validationcheck()
@@ -150,26 +181,10 @@ class Menumanagment:
                     meal_data = data[meal_type]
                     break
 
-            categories = list(meal_data.keys())
+            _,category_list = Menumanagment._choose_category(meal_data)
 
-            while True:
-                for i, cat in enumerate(categories, 1):
-                    print(f"{i}. {cat}")
-                try:
-                    cat_choice = int(input("Enter category number = "))
-                    if not 1 <= cat_choice <= len(categories):
-                        print("Invalid choice!")
-                        continue
-                    category_name = categories[cat_choice - 1]
-                    break
-                except ValueError:
-                    print("Invalid input!")
 
-            category_list = meal_data[category_name]
-
-            item_name = check.name_check(
-                input("Enter item name = "), "Enter item name = "
-            ).title()
+            item_name = check.name_check(input("Enter item name = "), "Enter item name = ").title()
 
             for item in category_list:
                 if item["item_name"].lower() == item_name.lower():
@@ -181,12 +196,15 @@ class Menumanagment:
 
             print("Item not found!")
 
-        except Exception:
-            logger.exception("Unhandled error in delete_item")
-            print("Delete failed!")
+        except Exception as e:
+           menu_logger.exception(
+            f"UNEXPECTED ERROR IN delete item inmanage_menu | Error: {e}")
+           print("There is an issue. Please try again after some time.")
 
     @staticmethod
     def update_item(meal_type):
+        """
+        Updates an existing food item."""
         try:
             food_menu = Createfile(PathModel.food_data).file()
             check = Validationcheck()
@@ -196,22 +214,7 @@ class Menumanagment:
                     meal_data = data[meal_type]
                     break
 
-            categories = list(meal_data.keys())
-
-            while True:
-                for i, cat in enumerate(categories, 1):
-                    print(f"{i}. {cat}")
-                try:
-                    cat_choice = int(input("Enter category number = "))
-                    if not 1 <= cat_choice <= len(categories):
-                        print("Invalid choice!")
-                        continue
-                    category_name = categories[cat_choice - 1]
-                    break
-                except ValueError:
-                    print("Invalid input!")
-
-            category_list = meal_data[category_name]
+            category_name, category_list = Menumanagment._choose_category(meal_data)
 
             item_name = check.name_check(
                 input("Enter item name = "), "Enter item name = "
@@ -226,13 +229,15 @@ class Menumanagment:
 
             print("Item not found!")
 
-        except Exception:
-            logger.exception("Unhandled error in update_item")
-            print("Update failed!")
+        except Exception as e:
+           menu_logger.exception(
+            f"UNEXPECTED ERROR IN update item in manage_menu | Error: {e}")
+           print("There is an issue. Please try again after some time.")
 
     
     @staticmethod
     def _update_item_menu(item, category_name):
+        """ Updates individual attributes of a food item."""
         try:
             check = Validationcheck()
 
@@ -270,12 +275,15 @@ class Menumanagment:
                 else:
                     print("Invalid choice!")
 
-        except Exception:
-            logger.exception("Unhandled error in _update_item_menu")
-            print("Update failed!")
+        except Exception as e:
+           menu_logger.exception(
+            f"UNEXPECTED ERROR IN update item menu in manage_menu | Error: {e}")
+           print("There is an issue. Please try again after some time.")
 
     @staticmethod
     def _reassign_ids(food_menu):
+        """
+        Reassigns sequential IDs to all food items."""
         try:
             new_id = 1
             for data in food_menu:
@@ -285,5 +293,7 @@ class Menumanagment:
                             for item in cat_list:
                                 item["id"] = str(new_id)
                                 new_id += 1
-        except Exception:
-            logger.exception("Unhandled error in _reassign_ids")
+        except Exception as e:
+           menu_logger.exception(
+            f"UNEXPECTED ERROR IN manage_menu | Error: {e}")
+           print("There is an issue. Please try again after some time.")

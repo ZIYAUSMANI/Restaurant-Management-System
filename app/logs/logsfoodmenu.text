@@ -1,0 +1,6 @@
+2026-01-02 21:40:48,889 | ERROR | menusystem | UNEXPECTED ERROR IN delete item inmanage_menu | Error: string indices must be integers, not 'str'
+Traceback (most recent call last):
+  File "c:\indixpert\python_project\app\menu\menusystem.py", line 172, in delete_item
+    if item["item_name"].lower() == item_name.lower():
+       ~~~~^^^^^^^^^^^^^
+TypeError: string indices must be integers, not 'str'

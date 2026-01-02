@@ -46,7 +46,7 @@
                 },
                 {
                     "id": "4",
-                    "item_name": "Masala Poha",
+                    "item_name": "Poha",
                     "size": [
                         {
                             "name": "Half",
@@ -54,7 +54,7 @@
                         },
                         {
                             "name": "Full",
-                            "price": 40
+                            "price": 60
                         }
                     ]
                 }
@@ -189,6 +189,20 @@
                             "price": 60
                         }
                     ]
+                },
+                {
+                    "id": "14",
+                    "item_name": "Water",
+                    "size": [
+                        {
+                            "name": "Half",
+                            "price": 10
+                        },
+                        {
+                            "name": "Full",
+                            "price": 20
+                        }
+                    ]
                 }
             ]
         }
@@ -197,7 +211,7 @@
         "LUNCH": {
             "Veg": [
                 {
-                    "id": "14",
+                    "id": "15",
                     "item_name": "Veg Thali",
                     "size": [
                         {
@@ -211,7 +225,7 @@
                     ]
                 },
                 {
-                    "id": "15",
+                    "id": "16",
                     "item_name": "Dal Tadka",
                     "size": [
                         {
@@ -225,7 +239,7 @@
                     ]
                 },
                 {
-                    "id": "16",
+                    "id": "17",
                     "item_name": "Paneer Butter Masala",
                     "size": [
                         {
@@ -239,7 +253,7 @@
                     ]
                 },
                 {
-                    "id": "17",
+                    "id": "18",
                     "item_name": "Jeera Rice",
                     "size": [
                         {
@@ -255,7 +269,7 @@
             ],
             "Non-Veg": [
                 {
-                    "id": "18",
+                    "id": "19",
                     "item_name": "Chicken Curry",
                     "size": [
                         {
@@ -269,7 +283,7 @@
                     ]
                 },
                 {
-                    "id": "19",
+                    "id": "20",
                     "item_name": "Chicken Biryani",
                     "size": [
                         {
@@ -283,7 +297,7 @@
                     ]
                 },
                 {
-                    "id": "20",
+                    "id": "21",
                     "item_name": "Egg Curry",
                     "size": [
                         {
@@ -299,7 +313,7 @@
             ],
             "Roti": [
                 {
-                    "id": "21",
+                    "id": "22",
                     "item_name": "Plain Roti",
                     "size": [
                         {
@@ -313,7 +327,7 @@
                     ]
                 },
                 {
-                    "id": "22",
+                    "id": "23",
                     "item_name": "Butter Roti",
                     "size": [
                         {
@@ -327,7 +341,7 @@
                     ]
                 },
                 {
-                    "id": "23",
+                    "id": "24",
                     "item_name": "Tandoori Roti",
                     "size": [
                         {
@@ -341,7 +355,7 @@
                     ]
                 },
                 {
-                    "id": "24",
+                    "id": "25",
                     "item_name": "Garlic Roti",
                     "size": [
                         {
@@ -357,7 +371,7 @@
             ],
             "Fast Food": [
                 {
-                    "id": "25",
+                    "id": "26",
                     "item_name": "Veg Fried Rice",
                     "size": [
                         {
@@ -371,7 +385,7 @@
                     ]
                 },
                 {
-                    "id": "26",
+                    "id": "27",
                     "item_name": "Chicken Fried Rice",
                     "size": [
                         {
@@ -385,7 +399,7 @@
                     ]
                 },
                 {
-                    "id": "27",
+                    "id": "28",
                     "item_name": "Veg Noodles",
                     "size": [
                         {
@@ -401,7 +415,7 @@
             ],
             "Drinks": [
                 {
-                    "id": "28",
+                    "id": "29",
                     "item_name": "Butter Milk",
                     "size": [
                         {
@@ -415,7 +429,7 @@
                     ]
                 },
                 {
-                    "id": "29",
+                    "id": "30",
                     "item_name": "Cold Drink",
                     "size": [
                         {
@@ -435,7 +449,7 @@
         "DINNER": {
             "Veg": [
                 {
-                    "id": "30",
+                    "id": "31",
                     "item_name": "Veg Biryani",
                     "size": [
                         {
@@ -449,7 +463,7 @@
                     ]
                 },
                 {
-                    "id": "31",
+                    "id": "32",
                     "item_name": "Shahi Paneer",
                     "size": [
                         {
@@ -465,7 +479,7 @@
             ],
             "Non-Veg": [
                 {
-                    "id": "32",
+                    "id": "33",
                     "item_name": "Butter Chicken",
                     "size": [
                         {
@@ -479,7 +493,7 @@
                     ]
                 },
                 {
-                    "id": "33",
+                    "id": "34",
                     "item_name": "Chicken Tikka",
                     "size": [
                         {
@@ -493,7 +507,7 @@
                     ]
                 },
                 {
-                    "id": "34",
+                    "id": "35",
                     "item_name": "Mutton Curry",
                     "size": [
                         {
@@ -509,7 +523,7 @@
             ],
             "Roti": [
                 {
-                    "id": "35",
+                    "id": "36",
                     "item_name": "Butter Naan",
                     "size": [
                         {
@@ -525,7 +539,7 @@
             ],
             "Fast Food": [
                 {
-                    "id": "36",
+                    "id": "37",
                     "item_name": "Veg Burger",
                     "size": [
                         {
@@ -539,7 +553,7 @@
                     ]
                 },
                 {
-                    "id": "37",
+                    "id": "38",
                     "item_name": "Chicken Burger",
                     "size": [
                         {
@@ -553,7 +567,7 @@
                     ]
                 },
                 {
-                    "id": "38",
+                    "id": "39",
                     "item_name": "Pizza Slice",
                     "size": [
                         {
@@ -569,7 +583,7 @@
             ],
             "Drinks": [
                 {
-                    "id": "39",
+                    "id": "40",
                     "item_name": "Lemon Juice",
                     "size": [
                         {
@@ -583,7 +597,7 @@
                     ]
                 },
                 {
-                    "id": "40",
+                    "id": "41",
                     "item_name": "Green Tea",
                     "size": [
                         {
@@ -597,7 +611,7 @@
                     ]
                 },
                 {
-                    "id": "41",
+                    "id": "42",
                     "item_name": "Fresh Lime Soda",
                     "size": [
                         {
@@ -611,7 +625,7 @@
                     ]
                 },
                 {
-                    "id": "42",
+                    "id": "43",
                     "item_name": "Mocktail",
                     "size": [
                         {

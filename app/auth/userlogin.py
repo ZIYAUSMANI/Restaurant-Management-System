@@ -18,7 +18,7 @@ class Loginuser:
     - Default: Access admin model.
     - Menuadmin: Access admin dashboard.
     - Menustaff: Access staff dashboard.
-    - logger: To handle anexpected errorr. 
+    - logger: To handle unexpected errors 
     """
     @staticmethod
     def login():

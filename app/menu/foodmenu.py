@@ -2,12 +2,29 @@ from ..domain.filehandler import Createfile
 from ..model.models import PathModel
 from ..model.models import FoodItemModel
 from ..model.models import FoodCategoryModel
+from ..logs.logger import get_logger
+
+menu_logger = get_logger(PathModel.menu_log, "foodmenu")
 
 
 class Managingfoodmenu:
+    """
+    Handles complete show food menu operations.
+
+     Uses the following classes:
+    - Createfile: Handles reading/writing JSON or file data.
+    - PathModel: Stores file paths for data storage .
+    - FoodItemModel: Access food items model
+    - FoodCategoryModel: Access food category model.
+    - logger: To handle unexpected errors 
+    """
     categories = []
     @classmethod
     def convert_food_data_to_model(cls, food_data):
+        """
+            convert food data to model the use in show menu method"""
+
+
         cls.categories = []
 
         for meal_dict in food_data:
@@ -44,37 +61,47 @@ class Managingfoodmenu:
 
     @staticmethod
     def show_food_menu():
-        ob = Createfile(PathModel.food_data)
-        food_data = ob.file()
-        Managingfoodmenu.convert_food_data_to_model(food_data)
+        """ show food menu operations."""
 
-        print("|------------------------------------------------------------|")
-        print("|======================== FOOD MENU =========================|")
-        print("|------------------------------------------------------------|")
+        try:
+            ob = Createfile(PathModel.food_data)
+            food_data = ob.file()
+            Managingfoodmenu.convert_food_data_to_model(food_data)
 
-        last_meal = None
+            print("|------------------------------------------------------------|")
+            print("|======================== FOOD MENU =========================|")
+            print("|------------------------------------------------------------|")
 
-        for category in Managingfoodmenu.categories:
+            last_meal = None
 
-            if category.meal_name != last_meal:
-                print(f"\n|{'='*((60 - len(category.meal_name) - 2)//2)} {category.meal_name.upper()} {'='*((60 - len(category.meal_name) - 2)//2 + (60 - len(category.meal_name) - 2)%2)}|")
+            for category in Managingfoodmenu.categories:
+
+                if category.meal_name != last_meal:
+                    print(f"\n|{'='*((60 - len(category.meal_name) - 2)//2)} {category.meal_name.upper()} {'='*((60 - len(category.meal_name) - 2)//2 + (60 - len(category.meal_name) - 2)%2)}|")
+                    print("|------------------------------------------------------------|")
+                    last_meal = category.meal_name
+
+                print(f"|>>> {category.category_name:<56}|")
                 print("|------------------------------------------------------------|")
-                last_meal = category.meal_name
 
-            print(f"|>>> {category.category_name:<56}|")
-            print("|------------------------------------------------------------|")
+                if category.category_name.lower() == "roti":
+                    print(f"|{'ID':<5}{'Item Name':<27}{'Single Price':<15}{'Double Price':<12} |")
+                else:
+                    print(f"|{'ID':<5}{'Item Name':<27}{'Half Price':<15}{'Full Price':<12} |")
 
-            if category.category_name.lower() == "roti":
-               print(f"|{'ID':<5}{'Item Name':<27}{'Single Price':<15}{'Double Price':<12} |")
-            else:
-                print(f"|{'ID':<5}{'Item Name':<27}{'Half Price':<15}{'Full Price':<12} |")
+                print("|------------------------------------------------------------|")
 
-            print("|------------------------------------------------------------|")
+                for food in category.items:
+                    print(
+                        f"|{food.id:<5}{food.item_name:<30}"
+                        f"{str(food.half_price) + ' ₹':<15}{str(food.full_price) + ' ₹':<9} |"
+                    )
 
-            for food in category.items:
-                print(
-                    f"|{food.id:<5}{food.item_name:<30}"
-                    f"{str(food.half_price) + ' ₹':<15}{str(food.full_price) + ' ₹':<9} |"
-                )
+                print("|------------------------------------------------------------|")
 
-            print("|------------------------------------------------------------|")
+            
+        except Exception as e:
+            menu_logger.exception(
+                f"UNEXPECTED ERROR in show_food_menu | Error: {e}"
+            )
+            print("Unable to display menu. Please try again later.")
