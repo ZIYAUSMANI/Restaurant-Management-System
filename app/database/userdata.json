@@ -114,5 +114,15 @@
         "department": "waiter",
         "past_experience": "0 year",
         "role": "staff"
+    },
+    {
+        "id": "79aa8dbd",
+        "name": "ram",
+        "email": "r@gmail.com",
+        "password": "ram232324",
+        "address": "pali",
+        "department": "waiter",
+        "past_experience": "0 year",
+        "role": "staff"
     }
 ]

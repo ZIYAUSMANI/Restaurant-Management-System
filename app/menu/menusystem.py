@@ -4,9 +4,10 @@ from ..validation.checkvalidation import Validationcheck
 from .foodmenu import Managingfoodmenu
 from ..logs.logger import get_logger
 
-menu_logger = get_logger(PathModel.menu_log, "menusystem")
+
 
 class Menumanagment:
+    menu_logger = get_logger(PathModel.menu_log, "menusystem")
     """
     Handles complete menu management operations.
 
@@ -45,7 +46,7 @@ class Menumanagment:
                 else:
                     print("Invalid choice! Please select between 1 to 5.")
         except Exception as e:
-           menu_logger.exception(
+           Menumanagment.menu_logger.exception(
             f"UNEXPECTED ERROR IN manage_menu | Error: {e}")
            print("There is an issue. Please try again after some time.")
 
@@ -77,7 +78,7 @@ class Menumanagment:
                 else:
                     print("Invalid choice!")
         except Exception as e:
-           menu_logger.exception(
+           Menumanagment.menu_logger.exception(
             f"UNEXPECTED ERROR IN choose meal | Error: {e}")
            print("There is an issue. Please try again after some time.")
 
@@ -102,8 +103,8 @@ class Menumanagment:
                 except ValueError:
                     print("Invalid input!")
         except Exception as e:
-           menu_logger.exception(
-            f"UNEXPECTED ERROR IN choose category | StaffEmail={Menumanagment.staff_email}| Error: {e}")
+           Menumanagment.menu_logger.exception(
+            f"UNEXPECTED ERROR IN choose category | Error: {e}")
            print("There is an issue. Please try again after some time.")
 
 
@@ -163,7 +164,7 @@ class Menumanagment:
             print(f"{item_name} added successfully!")
 
         except Exception as e:
-           menu_logger.exception(
+           Menumanagment.menu_logger.exception(
             f"UNEXPECTED ERROR IN add_item in manage_menu | Error: {e}")
            print("There is an issue. Please try again after some time.")
 
@@ -197,7 +198,7 @@ class Menumanagment:
             print("Item not found!")
 
         except Exception as e:
-           menu_logger.exception(
+           Menumanagment.menu_logger.exception(
             f"UNEXPECTED ERROR IN delete item inmanage_menu | Error: {e}")
            print("There is an issue. Please try again after some time.")
 
@@ -230,7 +231,7 @@ class Menumanagment:
             print("Item not found!")
 
         except Exception as e:
-           menu_logger.exception(
+           Menumanagment.menu_logger.exception(
             f"UNEXPECTED ERROR IN update item in manage_menu | Error: {e}")
            print("There is an issue. Please try again after some time.")
 
@@ -276,7 +277,7 @@ class Menumanagment:
                     print("Invalid choice!")
 
         except Exception as e:
-           menu_logger.exception(
+           Menumanagment.menu_logger.exception(
             f"UNEXPECTED ERROR IN update item menu in manage_menu | Error: {e}")
            print("There is an issue. Please try again after some time.")
 
@@ -294,6 +295,6 @@ class Menumanagment:
                                 item["id"] = str(new_id)
                                 new_id += 1
         except Exception as e:
-           menu_logger.exception(
+           Menumanagment.menu_logger.exception(
             f"UNEXPECTED ERROR IN manage_menu | Error: {e}")
            print("There is an issue. Please try again after some time.")

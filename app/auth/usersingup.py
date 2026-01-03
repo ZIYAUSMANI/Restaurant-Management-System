@@ -4,9 +4,10 @@ from ..validation.checkvalidation import Validationcheck
 from ..model.models import UserModel, PathModel , DefaultModel
 from ..logs.logger import get_logger
 
-auth_logger = get_logger(PathModel.athu_log, "authentication")
+
 
 class Signupuser:
+    auth_logger = get_logger(PathModel.athu_log, "authentication")
     """
     Handles user signup.
 
@@ -16,7 +17,7 @@ class Signupuser:
     - UserModel: Represents a user with model attributes like id, name, email, password, role, etc.
     - PathModel: Stores file paths for data storage (e.g., registration_data).
     - Default: Access staff model.
-    - logger : To handle unexpected error.
+    - logger : To handle unexpected errors
     """
     @staticmethod
     def signup():
@@ -46,7 +47,7 @@ class Signupuser:
             print("Registered successfully")
 
         except Exception as e:
-            auth_logger.error(
+            Signupuser.auth_logger.error(
                 f"Signup Error | Email: {getattr(user, 'email', 'N/A')} | Error: {e}"
             )
             print("Signup failed")

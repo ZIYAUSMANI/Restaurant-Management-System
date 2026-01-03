@@ -4,10 +4,8 @@ from ..model.models import FoodItemModel
 from ..model.models import FoodCategoryModel
 from ..logs.logger import get_logger
 
-menu_logger = get_logger(PathModel.menu_log, "foodmenu")
-
-
 class Managingfoodmenu:
+    menu_logger = get_logger(PathModel.menu_log, "foodmenu")
     """
     Handles complete show food menu operations.
 
@@ -101,7 +99,7 @@ class Managingfoodmenu:
 
             
         except Exception as e:
-            menu_logger.exception(
+            Managingfoodmenu.menu_logger.exception(
                 f"UNEXPECTED ERROR in show_food_menu | Error: {e}"
             )
             print("Unable to display menu. Please try again later.")

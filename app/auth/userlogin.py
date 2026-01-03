@@ -5,9 +5,10 @@ from ..domain.adminmenu import Menuadmin
 from ..domain.staffmenu import Menustaff
 from ..logs.logger import get_logger
 
-auth_logger = get_logger(PathModel.athu_log, "authentication")
 
 class Loginuser:
+    auth_logger = get_logger(PathModel.athu_log, "authentication")
+
     """
     Handles user login.
 
@@ -59,7 +60,7 @@ class Loginuser:
                 Menustaff.staffdasbord()
 
         except Exception as e:
-            auth_logger.error(
+            Loginuser.auth_logger.error(
                 f"LOGIN FAILED AFTER VALID INPUT | Email: {user_email} | Error: {e}"
             )
             print("Login failed")
