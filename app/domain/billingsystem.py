@@ -1,44 +1,65 @@
 from .filehandler import Createfile
-from ..model.models import PathModel
+from ..model.models import PathModel, BillItemModel
 from datetime import datetime
-from ..model.models import BillItemModel
 
 class Generatesbill:
-    def __init__(self, order_obj,booking_data=None):
-        foodmenu = Createfile(PathModel.food_data)
+    def __init__(self, order_taken=None, booking_data=None):
         self.billdata = Createfile(PathModel.bill_data).file()
-        self.food_data = foodmenu.file()
-        self.bill_items = []
-        self.order_taken = order_obj.order_data
+        self.food_data = Createfile(PathModel.food_data).file()
+        self.order_taken = order_taken if order_taken else []
         self.table_booked = [booking_data] if booking_data else []
-      
+        self.bill_items = []
 
     def prepare_bill_items(self):
         seat_charge = 0
-
         for booking in self.table_booked:
-            seat_charge += int(booking["seats_booked"]) * 50
+            for table in booking.get("tables", []):
+                seat_charge += int(table.get("seats_booked", 0)) * 50
 
         for order in self.order_taken:
-            for section in self.food_data[0].values():
-                for item in section:
-                    if item["id"] == order.id:
-                        bill = BillItemModel()
+            order_id = getattr(order, "id", None)
+            order_qty = int(getattr(order, "quantity", 0))
+            order_size = getattr(order, "size_choice", "").lower()
 
-                        bill.id = item["id"]
-                        bill.item_name = item["item_name"]
-                        bill.quantity = int(order.quantity)
-                        bill.price = int(item["price"])
-                        bill.total = bill.quantity * bill.price
-                        bill.seats = seat_charge   
-                        self.bill_items.append(bill)
-                        
+            for category in self.food_data[0].values():
+                for items in category.values():
+                    for item in items:
+                        if not isinstance(item, dict):
+                            continue
+
+                        sizes = []
+                        if "size" in item:
+                            sizes = item["size"]
+                        elif "half_price" in item and "full_price" in item:
+                            sizes = [
+                                {"name": "Half", "price": item["half_price"]},
+                                {"name": "Full", "price": item["full_price"]}
+                            ]
+                        else:
+                            sizes = [{"name": "", "price": item.get("price", 0)}]
+
+                        price = 0
+                        for s in sizes:
+                            if s["name"].lower() == order_size or order_size == "":
+                                price = int(s.get("price", 0))
+                                break
+
+                        if item.get("id") == order_id:
+                            bill = BillItemModel()
+                            bill.id = item["id"]
+                            bill.item_name = item["item_name"]
+                            bill.quantity = order_qty
+                            bill.price = price
+                            bill.total = bill.quantity * bill.price
+                            bill.seats = seat_charge
+                            self.bill_items.append(bill)
+                            break
+
     def show_bill(self):
-        if len(self.order_taken) == 0:
-            print("There is no order!")
-            return
-        print("Exiting Order Menu. bill genterating in process...")
+       
         self.prepare_bill_items()
+
+    
 
         now = datetime.now()
         date = now.strftime("%d-%m-%Y")
@@ -54,34 +75,27 @@ class Generatesbill:
         print("-" * 60)
 
         subtotal = 0
-
         for bill in self.bill_items:
             subtotal += bill.total
-            print(
-                f"{bill.id:<5}"
-                f"{bill.item_name:<25}"
-                f"{bill.quantity:<8}"
-                f"{bill.price:<10}"
-                f"{bill.total}"
-            )
+            print(f"{bill.id:<5}{bill.item_name:<25}{bill.quantity:<8}{bill.price:<10}{bill.total}")
+
+        seat_charge = self.bill_items[0].seats if self.bill_items else 0
+        if seat_charge > 0:
+            print("-" * 60)
+            print(f"{'Table Seat Charge':<48}\u20B9{seat_charge}")
 
         print("-" * 60)
-        seat_charge = self.bill_items[0].seats if self.bill_items else 0
-        if seat_charge >0:
-            print("-" * 60)
-            print(f"{'Table Seat Charge':<48}\u20B9{bill.seats}")
-            print("-" * 60)
-
         print(f"{'Subtotal':<48}\u20B9{subtotal}")
-        gst=int(subtotal * 0.05)
+        gst = int(subtotal * 0.05)
         print(f"{'GST (5%)':<48}\u20B9{gst}")
         print("-" * 60)
-        grand_total=(subtotal + int(subtotal * 0.05))+bill.seats
+        grand_total = subtotal + gst + seat_charge
         print(f"{'Grand Total':<48}\u20B9{grand_total}")
         print("=" * 60)
         print("        Thank You! Please Visit Again (^_^)")
         print("=" * 60)
-        self.save_bill(date,time,subtotal,gst,grand_total)
+
+        self.save_bill(date, time, subtotal, gst, grand_total)
 
     def save_bill(self, date, time, subtotal, gst, grand_total):
         bill_data = {

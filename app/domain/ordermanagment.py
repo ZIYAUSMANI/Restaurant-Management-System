@@ -2,7 +2,7 @@ from .filehandler import Createfile
 from ..model.models import PathModel, OrderModel
 from datetime import datetime, timedelta
 from ..validation.checkvalidation import Validationcheck
-from ..logs.logger import logger
+from ..logs.logger import get_logger
 
 
 class Ordermanaingsystem:
@@ -17,14 +17,14 @@ class Ordermanaingsystem:
             order.size_choice = data.get("size_choice")
             return order
         except Exception as e:
-            logger.error(f"Error in dict_to_order_model: {e}")
+            get_logger.error(f"Error in dict_to_order_model: {e}")
 
     @staticmethod
     def order_model_to_dict(order):
         try:
             return order.__dict__
         except Exception as e:
-            logger.error(f"Error in order_model_to_dict: {e}")
+            get_logger.error(f"Error in order_model_to_dict: {e}")
 
     @staticmethod
     def remove_expired_order():
@@ -42,7 +42,7 @@ class Ordermanaingsystem:
 
             Createfile(PathModel.order_data).write_in_file(updated_orders)
         except Exception as e:
-            logger.error(f"Error in remove_expired_order: {e}")
+            get_logger.error(f"Error in remove_expired_order: {e}")
 
     @staticmethod
     def show_all_order_save():
@@ -67,7 +67,7 @@ class Ordermanaingsystem:
                             )
                     print("-" * 68)
         except Exception as e:
-            logger.error(f"Error in show_all_order_save: {e}")
+            get_logger.error(f"Error in show_all_order_save: {e}")
 
     @staticmethod
     def delete_order():
@@ -134,7 +134,7 @@ class Ordermanaingsystem:
 
             print(f"There is no order with ID '{enter_order_id}'.")
         except Exception as e:
-            logger.error(f"Error in delete_order: {e}")
+            get_logger.error(f"Error in delete_order: {e}")
 
     @classmethod
     def upadate_order(cls):
@@ -175,7 +175,7 @@ class Ordermanaingsystem:
 
             print("no item order with this item name")
         except Exception as e:
-            logger.error(f"Error in upadate_order: {e}")
+            get_logger.error(f"Error in upadate_order: {e}")
 
     @staticmethod
     def update_order_menu(order):
@@ -226,7 +226,7 @@ class Ordermanaingsystem:
                 elif choice == 3:
                     break
         except Exception as e:
-            logger.error(f"Error in update_order_menu: {e}")
+            get_logger.error(f"Error in update_order_menu: {e}")
 
     @staticmethod
     def order_managment():
@@ -266,4 +266,4 @@ class Ordermanaingsystem:
                     print("Invalid choice! Please select a number between 1 and 4.")
 
         except Exception as e:
-            logger.error(f"Error in order_managment: {e}")
+            get_logger.error(f"Error in order_managment: {e}")

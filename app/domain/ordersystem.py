@@ -4,11 +4,10 @@ from .filehandler import Createfile
 from ..model.models import PathModel
 from ..menu.foodmenu import Managingfoodmenu
 from datetime import datetime
-from ..logs.logger import logger
+from ..logs.logger import get_logger
 
 
 class Managingorders:
-    current_booking = None
     order_data = []
 
     @staticmethod
@@ -41,11 +40,11 @@ class Managingorders:
                     Managingorders.show_all_order()
                 elif choice == 4:
                     Managingorders.save_orders()
-                    break
+                    return Managingorders.order_data
                 else:
                     print("Invalid choice! Please select a number between 1 and 4.")
         except Exception as e:
-            logger.error(f"Unexpected error in save_orders: {e}")
+            get_logger.error(f"Unexpected error in save_orders: {e}")
 
     @classmethod
     def save_orders(cls):
@@ -74,7 +73,7 @@ class Managingorders:
             Createfile(PathModel.order_data).write_in_file(order_full_data)
 
         except Exception as e:
-            logger.error(f"Unexpected error in save_orders: {e}")
+            get_logger.error(f"Unexpected error in save_orders: {e}")
             
     @classmethod
     def new_order(cls):
@@ -130,7 +129,7 @@ class Managingorders:
             if not found:
                 cls.order_data.append(order)
         except Exception as e:
-            logger.error(f"Unexpected error in save_orders: {e}")
+            get_logger.error(f"Unexpected error in save_orders: {e}")
 
     @classmethod
     def show_all_order(cls):
@@ -171,7 +170,7 @@ class Managingorders:
                     if found:
                         break
         except Exception as e:
-            logger.error(f"Unexpected error in save_orders: {e}")
+            get_logger.error(f"Unexpected error in save_orders: {e}")
 
    
 

@@ -1,7 +1,7 @@
 from ..model.models import PathModel,BookingModel,TableModel
 from .filehandler import Createfile
 from datetime import datetime, timedelta
-from .ordermanagment import Managingorders
+from .ordersystem import Managingorders
 import uuid
 
 class Booktable:
@@ -18,17 +18,21 @@ class Booktable:
         booking_file = Createfile(PathModel.table_booked)
         raw_bookings = booking_file.file() or []
         self.table_booking = []
-        for b in raw_bookings:
-            booking = BookingModel()
-            booking.booking_id = b["booking_id"]
-            booking.date = b["date"]
-            booking.time_slot = b["time_slot"]
-            booking.table_no = b["table_no"]
-            booking.seats_booked = b["seats_booked"]
-            booking.created_at = b["created_at"]
-            self.table_booking.append(booking)
+        for booking_group in raw_bookings:
+            booking_id = booking_group["booking_id"]
+            created_at = booking_group["created_at"]
 
-        self.booking_data = {}
+            for t in booking_group["tables"]:
+                booking = BookingModel()
+                booking.booking_id = booking_id
+                booking.created_at = created_at
+                booking.date = t["date"]
+                booking.time_slot = t["time_slot"]
+                booking.table_no = t["table_no"]
+                booking.seats_booked = t["seats_booked"]
+
+                self.table_booking.append(booking)
+
 
     def run_menu(self):
         while True:
@@ -37,8 +41,8 @@ class Booktable:
             print("="*35)
             
             print("1. Book a Table")
-            print("2. View Current Table Status")
-            print("3. View All Bookings (Debug)")
+            print("2. View all Table Status")
+            print("3. View All Bookings")
             print("4. Manually Remove Expired Bookings")
             print("5. Exit")
             print("="*35)
@@ -58,12 +62,6 @@ class Booktable:
             elif choice == 4:
                 self.remove_expired_bookings()
             elif choice == 5:
-                if len(self.booking_data)==0:
-                    print("Exiting book table system.")
-                    break
-                else:
-                    print("Exiting book table system. going to order menu")
-                    Managingorders.order_menu()
                     break
             else:
                 print("Invalid choice! Please enter a number between 1 and 5.")
@@ -110,20 +108,27 @@ class Booktable:
             current_start = current_end
 
         return slots
-
     def saving_tablebooking(self):
-        data_to_save = []
+        grouped = {}
+
         for b in self.table_booking:
-            data_to_save.append({
-                "booking_id": b.booking_id,
+            if b.booking_id not in grouped:
+                grouped[b.booking_id] = {
+                    "booking_id": b.booking_id,
+                    "created_at": b.created_at,
+                    "tables": []
+                }
+
+            grouped[b.booking_id]["tables"].append({
                 "date": b.date,
                 "time_slot": b.time_slot,
                 "table_no": b.table_no,
-                "seats_booked": b.seats_booked,
-                "created_at": b.created_at
+                "seats_booked": b.seats_booked
             })
-        file = Createfile(PathModel.table_booked)
-        file.write_in_file(data_to_save)
+
+        data_to_save = list(grouped.values())
+        Createfile(PathModel.table_booked).write_in_file(data_to_save)
+
 
     def get_available_slots_with_tables(self, date, all_slots):
         available_data = {}
@@ -198,7 +203,7 @@ class Booktable:
 
     def book_table(self):
         today = str(datetime.now().date())
-        print(f"\n--- Table Booking for {today} ---")
+        print(f"\n--- Advance Table Booking for {today} ---")
 
         all_slots = self.generate_time_slots_for_today()
         availability = self.get_available_slots_with_tables(today, all_slots)
@@ -214,68 +219,138 @@ class Booktable:
             return
 
         selected_slot = available_slots[time_slot_index]
-        available_tables = availability[selected_slot]
+        table_status = availability[selected_slot]
 
-        print(f"\nAvailable Tables for Slot: {selected_slot}")
-        table_index = self.choose_table(available_tables)
-        if table_index is None:
-            print("Booking cancelled.")
+        for t in table_status:
+            booked = sum(
+                b.seats_booked for b in self.table_booking
+                if b.date == today
+                and b.time_slot == selected_slot
+                and b.table_no == t["table_no"]
+            )
+            t["available"] = t["total_seats"] - booked
+
+        total_available = sum(t["available"] for t in table_status if t["available"] > 0)
+
+        if total_available <= 0:
+            print("No seats available for this slot.")
             return
 
-        selected_table = available_tables[table_index]
-        seats = self.choose_seats(selected_table["total_seats"])
+        print(f"\n--- AVAILABLE TABLES ({selected_slot}) ---")
+        print("-" * 60)
+        for t in table_status:
+            print(f"Table {t['table_no']} → Available Seats: {t['available']}")
+        print("-" * 60)
+        print(f"TOTAL AVAILABLE SEATS: {total_available}")
+
+        while True:
+            try:
+                seats_needed = int(input("How many seats do you want to book? "))
+                if 1 <= seats_needed <= total_available:
+                    break
+                print("Invalid seat count!")
+            except ValueError:
+                print("Enter numbers only!")
 
         booking_id = uuid.uuid4().hex[:6]
-        new_booking = BookingModel()
-        new_booking.booking_id = booking_id
-        new_booking.date = today
-        new_booking.time_slot = selected_slot
-        new_booking.table_no = selected_table["table_no"]
-        new_booking.seats_booked = seats
-        new_booking.created_at = datetime.now().isoformat()
+        seats_booked_total = 0
 
-        self.table_booking.append(new_booking)
-        self.booking_data = {
-        "booking_id": new_booking.booking_id,
-        "date": new_booking.date,
-        "time_slot": new_booking.time_slot,
-        "table_no": new_booking.table_no,
-        "seats_booked": new_booking.seats_booked,
-        "created_at": new_booking.created_at
-        }
-        Managingorders.current_booking= self.booking_data
+
+        while seats_booked_total < seats_needed:
+            remaining = seats_needed - seats_booked_total
+            print(f"\nSeats remaining to book: {remaining}")
+
+            try:
+                table_no = int(input("Enter table number: "))
+            except ValueError:
+                print("Invalid input!")
+                continue
+
+            table = next((t for t in table_status if t["table_no"] == table_no), None)
+            if not table or table["available"] == 0:
+                print("Invalid or full table!")
+                continue
+
+            max_seats = min(table["available"], remaining)
+
+            try:
+                seats = int(input(f"Seats to book (1-{max_seats}): "))
+            except ValueError:
+                print("Invalid input!")
+                continue
+
+            if seats < 1 or seats > max_seats:
+                print("Invalid seat count!")
+                continue
+
+            booking = BookingModel()
+            booking.booking_id = booking_id
+            booking.date = today
+            booking.time_slot = selected_slot
+            booking.table_no = table_no
+            booking.seats_booked = seats
+            booking.created_at = datetime.now().isoformat()
+
+            self.table_booking.append(booking)
+
+            table["available"] -= seats
+            seats_booked_total += seats
+
+            print(f"{seats} seats booked on Table {table_no}")
+
         self.saving_tablebooking()
 
-        print("\nBOOKING CONFIRMED")
-        print(f"Table No : {new_booking.table_no}")
-        print(f"Seats    : {new_booking.seats_booked}")
-        print(f"Time     : {new_booking.time_slot}")
-        print(f"Booking ID : {new_booking.booking_id}")
+        print("\n BOOKING COMPLETED SUCCESSFULLY")
+        print(f"Booking ID : {booking_id}")
+        print(f"Time Slot  : {selected_slot}")
+        print(f"Total Seats Booked : {seats_booked_total}")
         print("-------------------------------------------------------------\n")
+
 
     def view_all_bookings(self):
         if not self.table_booking:
             print("\nNo bookings found.")
             return
 
-        print("\n--- ALL CURRENT BOOKINGS ---")
-        print("-" * 70)
-        print(f"{'Booking ID':<12}{'Date':<12}{'Time Slot':<15}{'Table':<8}{'Seats':<8}")
-        print("-" * 70)
+        print("\n" + "=" * 60)
+        print(f"{'ALL BOOKINGS':^60}")
+        print("=" * 60)
+
+        grouped_bookings = {}
 
         for b in self.table_booking:
-            print(
-                f"{b.booking_id:<12}"
-                f"{b.date:<12}"
-                f"{b.time_slot:<15}"
-                f"{b.table_no:<8}"
-                f"{b.seats_booked:<8}"
-            )
-        print("-" * 70)
+            if b.booking_id not in grouped_bookings:
+                grouped_bookings[b.booking_id] = {
+                    "date": b.date,
+                    "time_slot": b.time_slot,
+                    "tables": []
+                }
+
+            grouped_bookings[b.booking_id]["tables"].append({
+                "table_no": b.table_no,
+                "seats_booked": b.seats_booked
+            })
+
+        for booking_id, data in grouped_bookings.items():
+            print(f"\nBooking ID : {booking_id}")
+            print(f"Date       : {data['date']}")
+            print(f"Time Slot  : {data['time_slot']}")
+            print("-" * 60)
+            print(f"{'Table No':^10}|{'Seats Booked':^15}")
+            print("-" * 60)
+
+            for t in data["tables"]:
+                print(f"{t['table_no']:^10}|{t['seats_booked']:^15}")
+
+            print("-" * 60)
+
 
     def view_current_table_status(self):
         today = str(datetime.now().date())
-        print(f"\n--- CURRENT TABLE STATUS FOR {today} ---")
+        print("\n" + "=" * 60)
+        print(f"{'CURRENT TABLE STATUS':^60}")
+        print(f"{today:^60}")
+        print("=" * 60)
 
         all_slots = self.generate_time_slots_for_today()
         if not all_slots:
@@ -284,17 +359,17 @@ class Booktable:
 
         print("\nAvailable Time Slots:")
         for i, slot in enumerate(all_slots, start=1):
-            print(f"{i}. {slot}")
+            print(f"  {i}. {slot}")
 
         while True:
             try:
-                choice = int(input(f"Choose slot (1-{len(all_slots)}) or 0 to cancel = "))
+                choice = int(input(f"\nChoose slot (1-{len(all_slots)}) or 0 to go back = "))
             except ValueError:
                 print("Invalid input! Only numbers allowed.")
                 continue
 
             if choice == 0:
-                print("View cancelled.")
+                print("exit form viwe table status.")
                 return
             elif 1 <= choice <= len(all_slots):
                 selected_slot = all_slots[choice - 1]
@@ -302,18 +377,158 @@ class Booktable:
             else:
                 print("Invalid choice!")
 
-        print(f"\nTime Slot: {selected_slot}")
+        print("\n" + "-" * 60)
+        print(f"{'Time Slot: ' + selected_slot:^60}")
         print("-" * 60)
-        print(f"{'Table No':<10}{'Total Seats':<15}{'Booked':<10}{'Available':<10}")
+
+        header = f"{'Table No':^10}|{'Total Seats':^15}|{'Booked':^10}|{'Available':^12}"
+        print(header)
         print("-" * 60)
+
+        total_available = 0
 
         for table in self.table_data:
             booked_seats = sum(
                 b.seats_booked for b in self.table_booking
-                if b.date == today and b.time_slot == selected_slot and b.table_no == table.table_no
+                if b.date == today
+                and b.time_slot == selected_slot
+                and b.table_no == table.table_no
             )
-            available_seats = max(table.total_seats - booked_seats, 0)
 
-            print(f"{table.table_no:<10}{table.total_seats:<15}{booked_seats:<10}{available_seats:<10}")
+            available_seats = max(table.total_seats - booked_seats, 0)
+            total_available += available_seats
+
+            print(
+                f"{table.table_no:^10}|"
+                f"{table.total_seats:^15}|"
+                f"{booked_seats:^10}|"
+                f"{available_seats:^12}"
+            )
 
         print("-" * 60)
+        print(f"{'TOTAL AVAILABLE SEATS':<30}: {total_available}")
+        print("=" * 60 + "\n")
+
+    def show_current_tables_booking(self):
+        today = str(datetime.now().date())
+        current_time = datetime.now().time()
+
+        all_slots = self.generate_time_slots_for_today()
+        matched_slot = None
+
+        for slot in all_slots:
+            start_str, end_str = slot.split(" - ")
+            start_time = datetime.strptime(start_str, "%H:%M").time()
+            end_time = datetime.strptime(end_str, "%H:%M").time()
+
+            if start_time <= current_time < end_time:
+                matched_slot = slot
+                break
+
+        if not matched_slot:
+            print("No active table slot at this time.")
+            return
+        
+        table_status = []
+        total_available = 0
+
+        for table in self.table_data:
+            booked_seats = sum(
+                b.seats_booked for b in self.table_booking
+                if b.date == today
+                and b.time_slot == matched_slot
+                and b.table_no == table.table_no
+            )
+
+            available = table.total_seats - booked_seats
+            if available > 0:
+                table_status.append({
+                    "table_no": table.table_no,
+                    "available": available
+                })
+                total_available += available
+
+        if total_available == 0:
+            print("No seats available at this time.")
+            return
+
+    
+        print(f"\n--- CURRENT TABLE STATUS ({matched_slot}) ---")
+        print("-" * 60)
+        for t in table_status:
+            print(f"Table {t['table_no']} → Available Seats: {t['available']}")
+        print("-" * 60)
+        print(f"TOTAL AVAILABLE SEATS: {total_available}")
+
+    
+        while True:
+            try:
+                seats_needed = int(input("How many seats do you want to book? "))
+                if 1 <= seats_needed <= total_available:
+                    break
+                print("Invalid seat count!")
+            except ValueError:
+                print("Enter numbers only!")
+
+        seats_booked_total = 0
+        booking_id = uuid.uuid4().hex[:6]
+
+        selected_tables = []
+        while seats_booked_total < seats_needed:
+            remaining = seats_needed - seats_booked_total
+            print(f"\nSeats remaining to book: {remaining}")
+
+            table_no = int(input("Enter table number: "))
+
+            table = next((t for t in table_status if t["table_no"] == table_no), None)
+            if not table:
+                print("Invalid table number!")
+                continue
+
+            max_seats = min(table["available"], remaining)
+
+            try:
+                seats = int(input(f"Seats to book (1-{max_seats}): "))
+            except ValueError:
+                print("Invalid input!")
+                continue
+
+            if seats < 1 or seats > max_seats:
+                print("Invalid seat count!")
+                continue
+
+            booking = BookingModel()
+            booking.booking_id = booking_id
+            booking.date = today
+            booking.time_slot = matched_slot
+            booking.table_no = table_no
+            booking.seats_booked = seats
+            booking.created_at = datetime.now().isoformat()
+
+            self.table_booking.append(booking)
+
+            selected_tables.append({
+            "table_no": table_no,
+            "seats_booked": seats
+                })
+
+            table["available"] -= seats
+            seats_booked_total += seats
+
+            print(f"{seats} seats booked on Table {table_no}")
+
+        self.saving_tablebooking()
+
+        print("\n BOOKING COMPLETED SUCCESSFULLY")
+        print(f"Booking ID : {booking_id}")
+        print(f"Time Slot  : {matched_slot}")
+        print(f"Total Seats Booked : {seats_booked_total}")
+        booking_summary = {
+        "booking_id": booking_id,
+        "date": today,
+        "time_slot": matched_slot,
+        "total_seats_booked": seats_booked_total,
+        "tables": selected_tables
+        }
+
+        return booking_summary
