@@ -21,6 +21,10 @@ class PathModel:
     order_data=r"C:\indixpert\python_project\app\database\orderdata.json"
     athu_log=r"C:\indixpert\python_project\app\logs\logsofauthentication.text"
     menu_log=r"C:\indixpert\python_project\app\logs\logsfoodmenu.text"
+    order_log=r"C:\indixpert\python_project\app\logs\logsorder.text"
+    table_log =r"C:\indixpert\python_project\app\logs\logstablebooking.text"
+    staff_menu_logs=r"C:\indixpert\python_project\app\logs\logsstaffmenu.text"
+    bill_logs=r"C:\indixpert\python_project\app\logs\logsbilling.text"
 
 class FoodItemModel:
     id = None

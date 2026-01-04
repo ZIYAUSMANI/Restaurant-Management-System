@@ -8,10 +8,25 @@ from ..logs.logger import get_logger
 
 
 class Managingorders:
+    """
+    Managingorders class is used to handle customer order operations.
+
+    It allows the user to:
+    - View food menu
+    - Add new orders
+    - View current orders
+    - Save orders to file
+
+    Orders are temporarily stored in memory and saved permanently when user exits.
+    """
+    order_logger = get_logger(PathModel.order_log, "ordermangement")
     order_data = []
 
     @staticmethod
     def order_menu():
+        """
+        Displays the main order take menu."""
+
         try:
             while True:
                 print("\n" + "="*35)
@@ -44,11 +59,17 @@ class Managingorders:
                 else:
                     print("Invalid choice! Please select a number between 1 and 4.")
         except Exception as e:
-            get_logger.error(f"Unexpected error in save_orders: {e}")
+           Managingorders.order_logger.exception(
+            f"UNEXPECTED ERROR IN Managingorder| Error: {e}")
+           print("There is an issue. Please try again after some time.")
 
     @classmethod
     def save_orders(cls):
+        """
+        Saves all current orders to the order data file."""
         try:
+            if not cls.order_data:
+                return
             order_full_data = Createfile(PathModel.order_data).file()
 
             order_id = str(1000 + len(order_full_data) + 1)
@@ -73,10 +94,14 @@ class Managingorders:
             Createfile(PathModel.order_data).write_in_file(order_full_data)
 
         except Exception as e:
-            get_logger.error(f"Unexpected error in save_orders: {e}")
+           Managingorders.order_logger.exception(
+            f"UNEXPECTED ERROR IN Managingorder| Error: {e}")
+           print("There is an issue. Please try again after some time.")
             
     @classmethod
     def new_order(cls):
+        """
+        Adds a new item to the current order."""
         try:
             check = Validationcheck()
             order = OrderModel()
@@ -129,10 +154,14 @@ class Managingorders:
             if not found:
                 cls.order_data.append(order)
         except Exception as e:
-            get_logger.error(f"Unexpected error in save_orders: {e}")
+           Managingorders.order_logger.exception(
+            f"UNEXPECTED ERROR IN Managingorder| Error: {e}")
+           print("There is an issue. Please try again after some time.")
 
     @classmethod
     def show_all_order(cls):
+        """
+        Displays all current orders with calculated prices."""
         try:
             food_data = Createfile(PathModel.food_data).file()
 
@@ -170,7 +199,9 @@ class Managingorders:
                     if found:
                         break
         except Exception as e:
-            get_logger.error(f"Unexpected error in save_orders: {e}")
+           Managingorders.order_logger.exception(
+            f"UNEXPECTED ERROR IN Managingorder| Error: {e}")
+           print("There is an issue. Please try again after some time.")
 
    
 

@@ -228,4 +228,45 @@ class Validationcheck:
             else:
                 return size_input
 
-                    
+    def validate_card_number(self,card_number):
+        while True:
+            
+            if card_number.isdigit() and 13 <= len(card_number) <= 19:
+                return card_number
+            print("Invalid Card Number! It should be 13-19 digits.")
+            card_number = input("Enter Card Number:").strip()
+
+    def validate_expiry_date(self,expiry_date):
+        while True:
+            try:
+                exp_month, exp_year = expiry_date.split("/")
+                if not (exp_month.isdigit() and exp_year.isdigit()):
+                    raise ValueError
+                exp_month = int(exp_month)
+                exp_year = int("20" + exp_year)
+                now = datetime.now()
+                if 1 <= exp_month <= 12 and ((exp_year > now.year) or (exp_year == now.year and exp_month >= now.month)):
+                    return expiry_date
+                else:
+                    raise ValueError
+            except ValueError:
+                expiry_date = input("Enter Expiry Date (MM/YY):").strip()
+                print("Invalid Expiry Date! Ensure MM/YY format and not expired.")
+
+    def validate_cvv(self, cvv):
+        while True:
+            if cvv.isdigit() and len(cvv) in (3, 4):
+                if int(cvv) != 0:
+                    return cvv
+
+            print("Invalid CVV! It should be 3 or 4 digits and cannot be all zeros.")
+            cvv = input("Enter CVV: ").strip()
+
+    def validate_upi(self,upi_id):
+        allowed_chars = set("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.-_@")
+        while True:
+            if upi_id and "@" in upi_id and all(char in allowed_chars for char in upi_id):
+                return upi_id
+            print("Invalid UPI ID! Must contain '@' and valid characters.")
+            upi_id = input("Enter UPI ID:").strip()
+

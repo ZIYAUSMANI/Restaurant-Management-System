@@ -1,0 +1,22 @@
+2026-01-04 18:29:46,264 | ERROR | staffmenu | Unexpected error in staff menu | Error: Validationcheck.name_check() missing 1 required positional argument: 'prompt'
+Traceback (most recent call last):
+  File "c:\indixpert\python_project\app\domain\staffmenu.py", line 168, in tablebooking_takeordermenu
+    Generatesbill(order_taken, table_book).show_bill()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "c:\indixpert\python_project\app\domain\billingsystem.py", line 131, in show_bill
+    payment_method, payment_details = self.choose_payment_method()
+                                      ~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "c:\indixpert\python_project\app\domain\billingsystem.py", line 98, in choose_payment_method
+    card_name = Validationcheck.name_check(input("Enter Cardholder Name: ").strip(),"Enter Cardholder Name:")
+TypeError: Validationcheck.name_check() missing 1 required positional argument: 'prompt'
+2026-01-04 18:53:52,782 | ERROR | staffmenu | Unexpected error in staff menu | Error: Validationcheck.validate_upi() missing 1 required positional argument: 'upi_id'
+Traceback (most recent call last):
+  File "c:\indixpert\python_project\app\domain\staffmenu.py", line 168, in tablebooking_takeordermenu
+    Generatesbill(order_taken, table_book).show_bill()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "c:\indixpert\python_project\app\domain\billingsystem.py", line 132, in show_bill
+    payment_method, payment_details = self.choose_payment_method()
+                                      ~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "c:\indixpert\python_project\app\domain\billingsystem.py", line 96, in choose_payment_method
+    upi_id = Validationcheck.validate_upi(input("Enter UPI ID: ").strip())
+TypeError: Validationcheck.validate_upi() missing 1 required positional argument: 'upi_id'

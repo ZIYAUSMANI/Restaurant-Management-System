@@ -1,11 +1,42 @@
 [
     {
-        "date": "29-12-2025",
-        "time": "03:49 PM",
+        "date": "04-01-2026",
+        "time": "06:40 PM",
+        "payment_method": "Credit Card",
+        "payment_details": {
+            "card_name": "ziya",
+            "card_number": "12345678901234",
+            "expiry_date": "3/26",
+            "cvv": "123"
+        },
         "items": [
             {
-                "id": "2",
-                "item_name": "Plain Dosa",
+                "id": "4",
+                "item_name": "Poha",
+                "quantity": 2,
+                "price": 60,
+                "total": 120
+            }
+        ],
+        "seat_charge": 100,
+        "subtotal": 120,
+        "gst": 6,
+        "grand_total": 226
+    },
+    {
+        "date": "04-01-2026",
+        "time": "06:50 PM",
+        "payment_method": "Credit Card",
+        "payment_details": {
+            "card_name": "ziya",
+            "card_number": "12131415161718",
+            "expiry_date": "3/26",
+            "cvv": "1233"
+        },
+        "items": [
+            {
+                "id": "3",
+                "item_name": "Masala Dosa",
                 "quantity": 2,
                 "price": 60,
                 "total": 120
@@ -17,93 +48,12 @@
         "grand_total": 126
     },
     {
-        "date": "29-12-2025",
-        "time": "03:49 PM",
-        "items": [
-            {
-                "id": "2",
-                "item_name": "Plain Dosa",
-                "quantity": 2,
-                "price": 60,
-                "total": 120
-            }
-        ],
-        "seat_charge": 100,
-        "subtotal": 120,
-        "gst": 6,
-        "grand_total": 226
-    },
-    {
-        "date": "29-12-2025",
-        "time": "03:50 PM",
-        "items": [
-            {
-                "id": "2",
-                "item_name": "Plain Dosa",
-                "quantity": 6,
-                "price": 60,
-                "total": 360
-            }
-        ],
-        "seat_charge": 100,
-        "subtotal": 360,
-        "gst": 18,
-        "grand_total": 478
-    },
-    {
-        "date": "03-01-2026",
-        "time": "01:04 PM",
-        "items": [
-            {
-                "id": "4",
-                "item_name": "Poha",
-                "quantity": 2,
-                "price": 60,
-                "total": 120
-            }
-        ],
-        "seat_charge": 100,
-        "subtotal": 120,
-        "gst": 6,
-        "grand_total": 226
-    },
-    {
-        "date": "03-01-2026",
-        "time": "01:17 PM",
-        "items": [
-            {
-                "id": "4",
-                "item_name": "Poha",
-                "quantity": 2,
-                "price": 60,
-                "total": 120
-            }
-        ],
-        "seat_charge": 50,
-        "subtotal": 120,
-        "gst": 6,
-        "grand_total": 176
-    },
-    {
-        "date": "03-01-2026",
-        "time": "01:23 PM",
-        "items": [
-            {
-                "id": "3",
-                "item_name": "Masala Dosa",
-                "quantity": 2,
-                "price": 60,
-                "total": 120
-            }
-        ],
-        "seat_charge": 50,
-        "subtotal": 120,
-        "gst": 6,
-        "grand_total": 176
-    },
-    {
-        "date": "03-01-2026",
-        "time": "01:27 PM",
+        "date": "04-01-2026",
+        "time": "06:57 PM",
+        "payment_method": "UPI",
+        "payment_details": {
+            "upi_id": "ziya@upi"
+        },
         "items": [
             {
                 "id": "4",
@@ -111,11 +61,37 @@
                 "quantity": 1,
                 "price": 60,
                 "total": 60
+            },
+            {
+                "id": "3",
+                "item_name": "Masala Dosa",
+                "quantity": 2,
+                "price": 35,
+                "total": 70
+            }
+        ],
+        "seat_charge": 100,
+        "subtotal": 130,
+        "gst": 6,
+        "grand_total": 236
+    },
+    {
+        "date": "04-01-2026",
+        "time": "06:58 PM",
+        "payment_method": "Cash",
+        "payment_details": {},
+        "items": [
+            {
+                "id": "2",
+                "item_name": "Plain Dosa",
+                "quantity": 2,
+                "price": 60,
+                "total": 120
             }
         ],
         "seat_charge": 50,
-        "subtotal": 60,
-        "gst": 3,
-        "grand_total": 113
+        "subtotal": 120,
+        "gst": 6,
+        "grand_total": 176
     }
 ]
