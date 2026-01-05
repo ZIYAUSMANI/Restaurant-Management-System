@@ -284,7 +284,11 @@ class Booktable:
 
             while True:
                 try:
-                    seats_needed = int(input("How many seats do you want to book? "))
+                    seats_needed = int(input("How many seats do you want to book? (0 to go back) = "))
+
+                    if seats_needed == 0:
+                        return
+                                
                     if 1 <= seats_needed <= total_available:
                         break
                     print("Invalid seat count!")
@@ -535,7 +539,10 @@ class Booktable:
         
             while True:
                 try:
-                    seats_needed = int(input("How many seats do you want to book? "))
+                    seats_needed = int(input("How many seats do you want to book? (0 to go back) = "))
+
+                    if seats_needed == 0:
+                        return
                     if 1 <= seats_needed <= total_available:
                         break
                     print("Invalid seat count!")

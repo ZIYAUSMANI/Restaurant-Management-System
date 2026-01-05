@@ -1,0 +1,6 @@
+2026-01-05 12:06:02,360 | ERROR | billing | UNEXPECTED ERROR IN Generatesbill| Error: cannot unpack non-iterable NoneType object
+Traceback (most recent call last):
+  File "c:\indixpert\python_project\app\domain\billingsystem.py", line 157, in show_bill
+    payment_method, payment_details = self.choose_payment_method()
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: cannot unpack non-iterable NoneType object

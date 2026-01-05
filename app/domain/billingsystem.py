@@ -50,39 +50,40 @@ class Generatesbill:
                 order_qty = int(getattr(order, "quantity", 0))
                 order_size = getattr(order, "size_choice", "").lower()
 
-                for category in self.food_data[0].values():
-                    for items in category.values():
-                        for item in items:
-                            if not isinstance(item, dict):
-                                continue
+                for meal in self.food_data:
+                    for category in meal.values():
+                        for items in category.values():
+                            for item in items:
+                                if not isinstance(item, dict):
+                                    continue
 
-                            sizes = []
-                            if "size" in item:
-                                sizes = item["size"]
-                            elif "half_price" in item and "full_price" in item:
-                                sizes = [
-                                    {"name": "Half", "price": item["half_price"]},
-                                    {"name": "Full", "price": item["full_price"]}
-                                ]
-                            else:
-                                sizes = [{"name": "", "price": item.get("price", 0)}]
+                                sizes = []
+                                if "size" in item:
+                                    sizes = item["size"]
+                                elif "half_price" in item and "full_price" in item:
+                                    sizes = [
+                                        {"name": "Half", "price": item["half_price"]},
+                                        {"name": "Full", "price": item["full_price"]}
+                                    ]
+                                else:
+                                    sizes = [{"name": "", "price": item.get("price", 0)}]
 
-                            price = 0
-                            for s in sizes:
-                                if s["name"].lower() == order_size or order_size == "":
-                                    price = int(s.get("price", 0))
+                                price = 0
+                                for s in sizes:
+                                    if s["name"].lower() == order_size or order_size == "":
+                                        price = int(s.get("price", 0))
+                                        break
+
+                                if item.get("id") == order_id:
+                                    bill = BillItemModel()
+                                    bill.id = item["id"]
+                                    bill.item_name = item["item_name"]
+                                    bill.quantity = order_qty
+                                    bill.price = price
+                                    bill.total = bill.quantity * bill.price
+                                    bill.seats = seat_charge
+                                    self.bill_items.append(bill)
                                     break
-
-                            if item.get("id") == order_id:
-                                bill = BillItemModel()
-                                bill.id = item["id"]
-                                bill.item_name = item["item_name"]
-                                bill.quantity = order_qty
-                                bill.price = price
-                                bill.total = bill.quantity * bill.price
-                                bill.seats = seat_charge
-                                self.bill_items.append(bill)
-                                break
         except Exception as e:
             Generatesbill.bill_logger.exception(f"UNEXPECTED ERROR IN Generatesbill| Error: {e}")
             print("There is an issue. Please try again after some time.")
@@ -95,12 +96,19 @@ class Generatesbill:
         """
         try:
             validation_check=Validationcheck()
-            print("\nChoose Payment Method:")
-            for key, method in self.PAYMENT_OPTIONS.items():
-                print(f"{key}. {method}")
+            while True:
+                print("\nChoose Payment Method:")
+                for key, method in self.PAYMENT_OPTIONS.items():
+                    print(f"{key}. {method}")
 
-            choice = input("Enter your choice (1-4): ").strip()
-            payment_method = self.PAYMENT_OPTIONS.get(choice, "Cash")
+                choice = input("Enter your choice (1-4): ").strip()
+
+                if choice not in self.PAYMENT_OPTIONS:
+                    print("Invalid choice. Please select a valid payment option.")
+                    continue
+
+                payment_method = self.PAYMENT_OPTIONS[choice]
+                break  
             payment_details = {}
 
             if payment_method == "UPI":

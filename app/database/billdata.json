@@ -93,5 +93,173 @@
         "subtotal": 120,
         "gst": 6,
         "grand_total": 176
+    },
+    {
+        "date": "05-01-2026",
+        "time": "11:32 AM",
+        "payment_method": "UPI",
+        "payment_details": {
+            "upi_id": "riya@uip_id"
+        },
+        "items": [
+            {
+                "id": "4",
+                "item_name": "Poha",
+                "quantity": 1,
+                "price": 60,
+                "total": 60
+            }
+        ],
+        "seat_charge": 200,
+        "subtotal": 60,
+        "gst": 3,
+        "grand_total": 263
+    },
+    {
+        "date": "05-01-2026",
+        "time": "11:55 AM",
+        "payment_method": "Cash",
+        "payment_details": {},
+        "items": [
+            {
+                "id": "3",
+                "item_name": "Masala Dosa",
+                "quantity": 2,
+                "price": 60,
+                "total": 120
+            }
+        ],
+        "seat_charge": 100,
+        "subtotal": 120,
+        "gst": 6,
+        "grand_total": 226
+    },
+    {
+        "date": "05-01-2026",
+        "time": "12:27 PM",
+        "payment_method": "Credit Card",
+        "payment_details": {
+            "card_name": "adsaf",
+            "card_number": "12435467657343",
+            "expiry_date": "2/27",
+            "cvv": "1234"
+        },
+        "items": [
+            {
+                "id": "3",
+                "item_name": "Masala Dosa",
+                "quantity": 1,
+                "price": 60,
+                "total": 60
+            }
+        ],
+        "seat_charge": 50,
+        "subtotal": 60,
+        "gst": 3,
+        "grand_total": 113
+    },
+    {
+        "date": "05-01-2026",
+        "time": "12:54 PM",
+        "payment_method": "Cash",
+        "payment_details": {},
+        "items": [
+            {
+                "id": "2",
+                "item_name": "Plain Dosa",
+                "quantity": 1,
+                "price": 60,
+                "total": 60
+            }
+        ],
+        "seat_charge": 50,
+        "subtotal": 60,
+        "gst": 3,
+        "grand_total": 113
+    },
+    {
+        "date": "05-01-2026",
+        "time": "12:54 PM",
+        "payment_method": "UPI",
+        "payment_details": {
+            "upi_id": "asdsf@upi_id"
+        },
+        "items": [
+            {
+                "id": "39",
+                "item_name": "Pizza Slice",
+                "quantity": 1,
+                "price": 100,
+                "total": 100
+            }
+        ],
+        "seat_charge": 50,
+        "subtotal": 100,
+        "gst": 5,
+        "grand_total": 155
+    },
+    {
+        "date": "05-01-2026",
+        "time": "12:56 PM",
+        "payment_method": "Debit Card",
+        "payment_details": {
+            "card_name": "dsaad",
+            "card_number": "12324567890567",
+            "expiry_date": "4/27",
+            "cvv": "123"
+        },
+        "items": [
+            {
+                "id": "17",
+                "item_name": "Paneer Butter Masala",
+                "quantity": 1,
+                "price": 190,
+                "total": 190
+            }
+        ],
+        "seat_charge": 50,
+        "subtotal": 190,
+        "gst": 9,
+        "grand_total": 249
+    },
+    {
+        "date": "05-01-2026",
+        "time": "01:02 PM",
+        "payment_method": "Cash",
+        "payment_details": {},
+        "items": [
+            {
+                "id": "39",
+                "item_name": "Pizza Slice",
+                "quantity": 1,
+                "price": 100,
+                "total": 100
+            }
+        ],
+        "seat_charge": 0,
+        "subtotal": 100,
+        "gst": 5,
+        "grand_total": 105
+    },
+    {
+        "date": "05-01-2026",
+        "time": "01:04 PM",
+        "payment_method": "UPI",
+        "payment_details": {
+            "upi_id": "priya@fdhf"
+        },
+        "items": [
+            {
+                "id": "38",
+                "item_name": "Chicken Burger",
+                "quantity": 1,
+                "price": 120,
+                "total": 120
+            }
+        ],
+        "seat_charge": 100,
+        "subtotal": 120,
+        "gst": 6,
+        "grand_total": 226
     }
 ]

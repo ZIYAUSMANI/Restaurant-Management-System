@@ -93,11 +93,18 @@ class Menumanagment:
             while True:
                 for i, cat in enumerate(categories, 1):
                     print(f"{i}. {cat}")
+                print(f"{len(categories) + 1}. Back")
+
                 try:
                     cat_choice = int(input("Enter category number = "))
+
+                    if cat_choice == len(categories) + 1:
+                        return None, None
+
                     if not 1 <= cat_choice <= len(categories):
                         print("Invalid choice!")
                         continue
+
                     category_name = categories[cat_choice - 1]
                     return category_name, meal_data[category_name]
                 except ValueError:
@@ -123,6 +130,8 @@ class Menumanagment:
                     break
 
             category_name, category_list = Menumanagment._choose_category(meal_data)
+            if category_name is None:
+                return
 
             item_name = check.name_check(input("Enter item name = "), "Enter item name = ").title()
 
@@ -183,7 +192,8 @@ class Menumanagment:
                     break
 
             _,category_list = Menumanagment._choose_category(meal_data)
-
+            if category_list is None:
+                return
 
             item_name = check.name_check(input("Enter item name = "), "Enter item name = ").title()
 
@@ -216,6 +226,8 @@ class Menumanagment:
                     break
 
             category_name, category_list = Menumanagment._choose_category(meal_data)
+            if category_name is None:
+                return
 
             item_name = check.name_check(
                 input("Enter item name = "), "Enter item name = "
