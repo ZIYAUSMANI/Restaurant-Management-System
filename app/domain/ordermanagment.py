@@ -85,12 +85,12 @@ class Ordermanaingsystem:
             else:
                 for data in order_data:
                     print(f"date time = {data['date_time']}")
-                    print(f"order id = {data['order_id']}")
+                    print(f"ORDER ID = {data['order_id']}")
 
                     for order_take in data["order"]:
                         for _, value in order_take.items():
                             print(
-                                f"ID: {value['id']} | "
+                                f"id: {value['id']} | "
                                 f"Item: {value['item_name']} | "
                                 f"Size: {value['size_choice']} | "
                                 f"Quantity: {value['quantity']}"
@@ -117,7 +117,7 @@ class Ordermanaingsystem:
                 return
 
             enter_order_id = check.get_valid_order_id(
-                input("Enter ID of the order you want to delete: ").strip()
+                input("Enter ORDER ID of the order you want to delete: ").strip()
             )
 
             for order in order_data:
@@ -190,7 +190,7 @@ class Ordermanaingsystem:
                 return
 
             enter_order_id = check.get_valid_order_id(
-                input("Enter ID of the order you want to update: ").strip()
+                input("Enter ORDER ID of the order you want to update: ").strip()
             )
 
             for order in order_data:
@@ -230,21 +230,30 @@ class Ordermanaingsystem:
         try:
             check = Validationcheck()
             food_data = Createfile(PathModel.food_data).file()
-            item_category = None
+            selected_item = None
 
             for meal in food_data:
                 for _, categories in meal.items():
-                    for cat_name, items in categories.items():
+                    for _, items in categories.items():
                         for item in items:
-                            if item["item_name"].lower().startswith(order.item_name.lower()):
-                                item_category = cat_name.lower()
+                            if item["item_name"].lower() == order.item_name.lower():
+                                selected_item = item
                                 break
-                        if item_category:
+                        if selected_item:
                             break
-                    if item_category:
+                    if selected_item:
                         break
-                if item_category:
+                if selected_item:
                     break
+
+            if not selected_item:
+              print("Item not found in menu.")
+              return
+
+        
+            allowed_sizes = []
+            for s in selected_item["size"]:
+                allowed_sizes.append(s["name"].lower())
 
             while True:
                 print("\n========= Update Your Order ========")
@@ -259,10 +268,7 @@ class Ordermanaingsystem:
                     continue
 
                 if choice == 1:
-                    order.size_choice = check.size_check(
-                        input(f"Enter new size (current: {order.size_choice}): ").title().strip(),
-                        item_category
-                    )
+                    order.size_choice = check.size_check(input(f"Enter new size (current: {order.size_choice}): ").title().strip(),allowed_sizes)
                     print(f"Size updated to {order.size_choice}")
 
                 elif choice == 2:

@@ -19,12 +19,14 @@ class PathModel:
     table_booked=r"C:\indixpert\python_project\app\database\tablebooking.json"
     bill_data=r"C:\indixpert\python_project\app\database\billdata.json"
     order_data=r"C:\indixpert\python_project\app\database\orderdata.json"
-    athu_log=r"C:\indixpert\python_project\app\logs\logsofauthentication.text"
-    menu_log=r"C:\indixpert\python_project\app\logs\logsfoodmenu.text"
-    order_log=r"C:\indixpert\python_project\app\logs\logsorder.text"
-    table_log =r"C:\indixpert\python_project\app\logs\logstablebooking.text"
-    staff_menu_logs=r"C:\indixpert\python_project\app\logs\logsstaffmenu.text"
-    bill_logs=r"C:\indixpert\python_project\app\logs\logsbilling.text"
+    athu_log=r"C:\indixpert\python_project\app\logs\logs_of_authentication.text"
+    menu_log=r"C:\indixpert\python_project\app\logs\logs_foodmenu.text"
+    order_log=r"C:\indixpert\python_project\app\logs\logs_order.text"
+    table_log =r"C:\indixpert\python_project\app\logs\logs_tablebooking.text"
+    staff_menu_logs=r"C:\indixpert\python_project\app\logs\logs_staffmenu.text"
+    bill_logs=r"C:\indixpert\python_project\app\logs\logs_billing.text"
+    report_logs=r"C:\indixpert\python_project\app\logs\logs_report.text"
+    admin_menu_logs=r"C:\indixpert\python_project\app\logs\logs_adminmenu.text"
 
 class FoodItemModel:
     id = None
@@ -51,6 +53,8 @@ class BillItemModel:
     price = None
     total = None
     seats=None
+    items = None  
+    tables = None
 
 class BookingModel:
     booking_id = None

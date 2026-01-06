@@ -111,13 +111,13 @@ class Managingorders:
 
             
             item_found = False
-            item_category = None
+            selected_item = None
             for meal in food_data:
                 for _, categories in meal.items():
                     for category_name,items in categories.items():
                         for item in items:
                             if item["item_name"].lower() == order_name.lower():
-                                item_category = category_name.lower()
+                                selected_item = item
                                 order.id=item["id"]
                                 item_found = True
                                 break
@@ -134,11 +134,19 @@ class Managingorders:
 
             order.item_name = order_name
             order.quantity = check.quantity_chcek(input("Enter the quantity: "))
-            if item_category == "roti":
-                order.size_choice = check.size_check(input("Enter size (Single / Double): ").title(),item_category)
-            else:
-                order.size_choice = check.size_check(input("Enter size (Half / Full ): ").title(),item_category)
+            print("\n")
+            available_sizes = []
+            for s in selected_item["size"]:
+                print(f"- {s['name']} (₹{s['price']})")
+                available_sizes.append(s["name"].lower())
 
+            while True:
+                size_choice = input("Enter size: ").title()
+                if size_choice.lower() in available_sizes:
+                    order.size_choice = size_choice
+                    break
+                else:
+                    print("Invalid size. Please choose from available sizes.")
             found = False
             for existing_order in cls.order_data:
                 if (

@@ -35,27 +35,33 @@ class Menumanagment:
 
                 if choice == 1:
                     Managingfoodmenu.show_food_menu()
+
                 elif choice == 2:
-                    Menumanagment._choose_meal("add")
+                    Menumanagment._choose_meal()   
+
                 elif choice == 3:
-                    Menumanagment._choose_meal("delete")
+                    Menumanagment.delete_item()   
+
                 elif choice == 4:
-                    Menumanagment._choose_meal("update")
+                    Menumanagment.update_item()
+
                 elif choice == 5:
                     break
+
                 else:
                     print("Invalid choice! Please select between 1 to 5.")
+
         except Exception as e:
-           Menumanagment.menu_logger.exception(
-            f"UNEXPECTED ERROR IN manage_menu | Error: {e}")
-           print("There is an issue. Please try again after some time.")
+            Menumanagment.menu_logger.exception(
+                f"UNEXPECTED ERROR IN manage_menu | Error: {e}")
+            print("There is an issue. Please try again after some time.")
 
     @staticmethod
-    def _choose_meal(action):
-        """Allows the user to select a meal type."""
+    def _choose_meal():
+        """Allows the user to select a meal type for adding item."""
         try:
             while True:
-                print(f"\n=========== {action.title()} item ===========")
+                print("\n=========== Add Item ===========")
                 print("1. Breakfast\n2. Lunch\n3. Dinner\n4. Back")
 
                 try:
@@ -64,23 +70,25 @@ class Menumanagment:
                     print("Invalid input!")
                     continue
 
-                meal_map = {1: "BREAKFAST", 2: "LUNCH", 3: "DINNER"}
+                meal_map = {
+                    1: "BREAKFAST",
+                    2: "LUNCH",
+                    3: "DINNER"
+                }
 
                 if choice in meal_map:
-                    if action == "add":
-                        Menumanagment.add_item(meal_map[choice])
-                    elif action == "delete":
-                        Menumanagment.delete_item(meal_map[choice])
-                    elif action == "update":
-                        Menumanagment.update_item(meal_map[choice])
+                    Menumanagment.add_item(meal_map[choice])
+
                 elif choice == 4:
                     break
+
                 else:
                     print("Invalid choice!")
+
         except Exception as e:
-           Menumanagment.menu_logger.exception(
-            f"UNEXPECTED ERROR IN choose meal | Error: {e}")
-           print("There is an issue. Please try again after some time.")
+            Menumanagment.menu_logger.exception(
+                f"UNEXPECTED ERROR IN choose meal | Error: {e}")
+            print("There is an issue. Please try again after some time.")
 
 
     @staticmethod
@@ -115,11 +123,8 @@ class Menumanagment:
            print("There is an issue. Please try again after some time.")
 
 
-
     @staticmethod
     def add_item(meal_type):
-        """
-        Adds a new food item to the selected meal and category."""
         try:
             food_menu = Createfile(PathModel.food_data).file()
             check = Validationcheck()
@@ -144,126 +149,108 @@ class Menumanagment:
             item.id = "0"
             item.item_name = item_name
 
-            sizes = []
+            print("\nChoose price type to add:")
+            print("1. Half / Full")
+            print("2. Single / Double")
+            while True:
+                choice = input("Enter 1 or 2 = ").strip()
+                if choice in ["1", "2"]:
+                    break
+                print("Invalid input! Enter 1 or 2.")
 
-            if category_name.lower() == "roti":
-                single = check.price_check(
-                    input("Enter Single price = "), "Enter Single price = "
-                )
-                double = check.price_check(
-                    input("Enter Double price = "), "Enter Double price = "
-                )
-                sizes.append({"name": "Single", "price": single})
-                sizes.append({"name": "Double", "price": double})
-            else:
-                half = check.price_check(
-                    input("Enter Half price = "), "Enter Half price = "
-                )
-                full = check.price_check(
-                    input("Enter Full price = "), "Enter Full price = "
-                )
+            sizes = []
+            if choice == "1":
+                half = check.price_check(input("Enter Half price = "), "Enter Half price = ")
+                full = check.price_check(input("Enter Full price = "), "Enter Full price = ")
                 sizes.append({"name": "Half", "price": half})
                 sizes.append({"name": "Full", "price": full})
+            else:
+                single = check.price_check(input("Enter Single price = "), "Enter Single price = ")
+                double = check.price_check(input("Enter Double price = "), "Enter Double price = ")
+                sizes.append({"name": "Single", "price": single})
+                sizes.append({"name": "Double", "price": double})
 
             item.size = sizes
-
             category_list.append(item.__dict__)
+
             Menumanagment._reassign_ids(food_menu)
             Createfile(PathModel.food_data).write_in_file(food_menu)
             print(f"{item_name} added successfully!")
 
         except Exception as e:
-           Menumanagment.menu_logger.exception(
-            f"UNEXPECTED ERROR IN add_item in manage_menu | Error: {e}")
-           print("There is an issue. Please try again after some time.")
+            Menumanagment.menu_logger.exception(
+                f"UNEXPECTED ERROR IN add_item in manage_menu | Error: {e}")
+            print("There is an issue. Please try again after some time.")
+
 
             
     @staticmethod
-    def delete_item(meal_type):
-        """
-        Deletes a food item from the selected meal and category."""
+    def delete_item():
+        """Deletes a food item by name without asking for meal or category."""
         try:
             food_menu = Createfile(PathModel.food_data).file()
             check = Validationcheck()
 
+            item_name = check.name_check(input("Enter the name of the item to delete = "), "Enter item name = ").title()
+
             for data in food_menu:
-                if meal_type in data:
-                    meal_data = data[meal_type]
-                    break
-
-            _,category_list = Menumanagment._choose_category(meal_data)
-            if category_list is None:
-                return
-
-            item_name = check.name_check(input("Enter item name = "), "Enter item name = ").title()
-
-            for item in category_list:
-                if item["item_name"].lower() == item_name.lower():
-                    category_list.remove(item)
-                    Menumanagment._reassign_ids(food_menu)
-                    Createfile(PathModel.food_data).write_in_file(food_menu)
-                    print("Item deleted successfully!")
-                    return
+                for categories in data.values():  # Scan all meals
+                    for cat_list in categories.values():  # Scan all categories
+                        for item in cat_list:
+                            if item["item_name"].lower() == item_name.lower():
+                                cat_list.remove(item)
+                                Menumanagment._reassign_ids(food_menu)
+                                Createfile(PathModel.food_data).write_in_file(food_menu)
+                                print(f"{item_name} deleted successfully!")
+                                return
 
             print("Item not found!")
 
         except Exception as e:
-           Menumanagment.menu_logger.exception(
-            f"UNEXPECTED ERROR IN delete item inmanage_menu | Error: {e}")
-           print("There is an issue. Please try again after some time.")
+            Menumanagment.menu_logger.exception(
+                f"UNEXPECTED ERROR IN delete_item | Error: {e}")
+            print("There is an issue. Please try again after some time.")
+
 
     @staticmethod
-    def update_item(meal_type):
-        """
-        Updates an existing food item."""
+    def update_item():
+        """Updates a food item by name without asking for meal or category."""
         try:
             food_menu = Createfile(PathModel.food_data).file()
             check = Validationcheck()
 
+            item_name = check.name_check(input("Enter the name of the item to update = "), "Enter item name = ").title()
+
             for data in food_menu:
-                if meal_type in data:
-                    meal_data = data[meal_type]
-                    break
-
-            category_name, category_list = Menumanagment._choose_category(meal_data)
-            if category_name is None:
-                return
-
-            item_name = check.name_check(
-                input("Enter item name = "), "Enter item name = "
-            ).title()
-
-            for item in category_list:
-                if item["item_name"].lower() == item_name.lower():
-                    Menumanagment._update_item_menu(item, category_name)
-                    Createfile(PathModel.food_data).write_in_file(food_menu)
-                    print("Item updated successfully!")
-                    return
+                for categories in data.values(): 
+                    for cat_list in categories.values():  
+                        for item in cat_list:
+                            if item["item_name"].lower() == item_name.lower():
+                                Menumanagment._update_item_menu(item)
+                                Createfile(PathModel.food_data).write_in_file(food_menu)
+                                return
 
             print("Item not found!")
 
         except Exception as e:
-           Menumanagment.menu_logger.exception(
-            f"UNEXPECTED ERROR IN update item in manage_menu | Error: {e}")
-           print("There is an issue. Please try again after some time.")
+            Menumanagment.menu_logger.exception(
+                f"UNEXPECTED ERROR IN update_item | Error: {e}")
+            print("There is an issue. Please try again after some time.")
 
-    
     @staticmethod
-    def _update_item_menu(item, category_name):
-        """ Updates individual attributes of a food item."""
+    def _update_item_menu(item):
+        """Updates individual attributes of a food item based on actual stored sizes."""
         try:
             check = Validationcheck()
 
             while True:
                 print("\nWhat do you want to update?")
                 print("1. Name")
-                if category_name.lower() == "roti":
-                    print("2. Single price")
-                    print("3. Double price")
-                else:
-                    print("2. Half price")
-                    print("3. Full price")
-                print("4. Back")
+
+                price_options = [s["name"] for s in item["size"]]
+                for idx, name in enumerate(price_options, 2):
+                    print(f"{idx}. {name} price")
+                print(f"{len(price_options) + 2}. Back")
 
                 try:
                     choice = int(input("Enter your choice = "))
@@ -273,25 +260,26 @@ class Menumanagment:
 
                 if choice == 1:
                     item["item_name"] = check.name_check(
-                        input("Enter new name = "), "Enter new name = "
-                    ).title()
-                elif choice == 2:
-                    item["size"][0]["price"] = check.price_check(
-                        input("Enter new price = "), "Enter new price = "
+                        input("Enter new name = "), "Enter new name = ").title()
+                    print("item name update successfully!")
+                    
+                elif 2 <= choice <= len(price_options) + 1:
+                    price_index = choice - 2
+                    price_name = price_options[price_index]
+                    item["size"][price_index]["price"] = check.price_check(
+                        input(f"Enter new {price_name} price = "), f"Enter new {price_name} price = "
                     )
-                elif choice == 3:
-                    item["size"][1]["price"] = check.price_check(
-                        input("Enter new price = "), "Enter new price = "
-                    )
-                elif choice == 4:
+                    print("item_name price update successfully!")
+                elif choice == len(price_options) + 2:
                     break
                 else:
                     print("Invalid choice!")
 
         except Exception as e:
-           Menumanagment.menu_logger.exception(
-            f"UNEXPECTED ERROR IN update item menu in manage_menu | Error: {e}")
-           print("There is an issue. Please try again after some time.")
+            Menumanagment.menu_logger.exception(
+                f"UNEXPECTED ERROR IN update item menu in manage_menu | Error: {e}")
+            print("There is an issue. Please try again after some time.")
+
 
     @staticmethod
     def _reassign_ids(food_menu):

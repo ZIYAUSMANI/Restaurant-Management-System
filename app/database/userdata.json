@@ -124,5 +124,15 @@
         "department": "waiter",
         "past_experience": "0 year",
         "role": "staff"
+    },
+    {
+        "id": "5650860f",
+        "name": "sohel",
+        "email": "sohel@gmail.com",
+        "password": "sohel12345",
+        "address": "jodhpur",
+        "department": "waiter",
+        "past_experience": "0 year",
+        "role": "staff"
     }
 ]

@@ -2,4 +2,5 @@
 2026-01-02 19:12:55,275 | ERROR | authentication | LOGIN FAILED AFTER VALID INPUT | Email: sadiya@gmail.com | Error: 'utf-8' codec can't decode byte 0xe0 in position 0: unexpected end of data
 2026-01-02 19:14:52,955 | ERROR | authentication | LOGIN FAILED AFTER VALID INPUT | Email: sadiya@gmail.com | Error: type object 'Managingorders' has no attribute 'order'
 2026-01-02 21:38:19,058 | ERROR | authentication | LOGIN FAILED AFTER VALID INPUT | Email: ziya@2008gmail.com | Error: Menuadmin.admindasbord() takes 0 positional arguments but 1 was given
+2026-01-06 12:10:45,216 | ERROR | authentication | LOGIN FAILED AFTER VALID INPUT | Email: ziya@2008gmail.com | Error: ReportGenerator.bill_report() missing 1 required positional argument: 'bills'
 

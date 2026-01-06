@@ -210,6 +210,8 @@ class Generatesbill:
                 "time": time,
                 "payment_method": payment_method,
                 "payment_details": payment_details,
+                "tables": self.table_booked[0].get("tables", [])
+                if self.table_booked else [],
                 "items": [
                     {
                         "id": bill.id,

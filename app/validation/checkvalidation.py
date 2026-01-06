@@ -209,24 +209,17 @@ class Validationcheck:
             print("Invalid price! Enter a positive number.")
             price = input(prompt)
 
-    def size_check(self, size, item_category):
+    def size_check(self,size_input, allowed_sizes):
+        
         while True:
-            size_input = size.strip().title()
-
-            if item_category == "roti":
-                allowed_sizes = ["Single", "Double"]
-                message = "Invalid size! Please enter one of: Single, Double."
-                prompt = "Enter size (Single / Double): "
+            if size_input.lower() in allowed_sizes:
+                return size_input.title()
             else:
-                allowed_sizes = ["Half", "Full"]
-                message = "Invalid size! Please enter one of: Half , Full ."
-                prompt = "Enter size (Half  / Full ): "
+                print("Invalid size! Choose only from:")
+                for size in allowed_sizes:
+                    print(f"- {size.title()}")
+                size_input = input("Enter size again: ").strip()
 
-            if size_input.isnumeric() or size_input not in allowed_sizes:
-                print(message)
-                size = input(prompt)
-            else:
-                return size_input
 
     def validate_card_number(self,card_number):
         while True:

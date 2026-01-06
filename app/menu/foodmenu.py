@@ -78,21 +78,24 @@ class Managingfoodmenu:
                     print(f"\n|{'='*((60 - len(category.meal_name) - 2)//2)} {category.meal_name.upper()} {'='*((60 - len(category.meal_name) - 2)//2 + (60 - len(category.meal_name) - 2)%2)}|")
                     print("|------------------------------------------------------------|")
                     last_meal = category.meal_name
-
+                print("|                                                            |")
                 print(f"|>>> {category.category_name:<56}|")
+                print("|                                                            |")
                 print("|------------------------------------------------------------|")
-
-                if category.category_name.lower() == "roti":
-                    print(f"|{'ID':<5}{'Item Name':<27}{'Single Price':<15}{'Double Price':<12} |")
-                else:
-                    print(f"|{'ID':<5}{'Item Name':<27}{'Half Price':<15}{'Full Price':<12} |")
+                        
+                print(
+                    f"|{'ID':<5}"
+                    f"{'Item Name':<16}"
+                    f"{'Half/Single Price':<21}"
+                    f"{'Full/Double Price':<16} |"
+                )
 
                 print("|------------------------------------------------------------|")
 
                 for food in category.items:
                     print(
-                        f"|{food.id:<5}{food.item_name:<30}"
-                        f"{str(food.half_price) + ' ₹':<15}{str(food.full_price) + ' ₹':<9} |"
+                        f"|{food.id:<5}{food.item_name:<23}"
+                        f"{str(food.half_price) + ' ₹':<17}{str(food.full_price) + ' ₹':<14} |"
                     )
 
                 print("|------------------------------------------------------------|")
