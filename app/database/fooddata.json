@@ -406,15 +406,15 @@
                 },
                 {
                     "id": "29",
-                    "item_name": "Cold Coffee",
+                    "item_name": "Water",
                     "size": [
                         {
                             "name": "Half",
-                            "price": 35
+                            "price": 10
                         },
                         {
                             "name": "Full",
-                            "price": 60
+                            "price": 20
                         }
                     ]
                 }

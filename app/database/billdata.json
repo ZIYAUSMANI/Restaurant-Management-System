@@ -380,5 +380,57 @@
         "subtotal": 60,
         "gst": 3,
         "grand_total": 63
+    },
+    {
+        "date": "07-01-2026",
+        "time": "12:23 PM",
+        "payment_method": "Cash",
+        "payment_details": {},
+        "tables": [
+            {
+                "date": "2026-01-07",
+                "time_slot": "12:00 - 13:00",
+                "table_no": 1,
+                "seats_booked": 4
+            }
+        ],
+        "items": [
+            {
+                "id": "6",
+                "item_name": "Vada",
+                "quantity": 2,
+                "price": 40,
+                "total": 80
+            }
+        ],
+        "seat_charge": 200,
+        "subtotal": 80,
+        "gst": 4,
+        "grand_total": 284
+    },
+    {
+        "date": "07-01-2026",
+        "time": "12:32 PM",
+        "payment_method": "Cash",
+        "payment_details": {},
+        "tables": [
+            {
+                "table_no": 1,
+                "seats_booked": 1
+            }
+        ],
+        "items": [
+            {
+                "id": "28",
+                "item_name": "Milk",
+                "quantity": 2,
+                "price": 60,
+                "total": 120
+            }
+        ],
+        "seat_charge": 50,
+        "subtotal": 120,
+        "gst": 6,
+        "grand_total": 176
     }
 ]

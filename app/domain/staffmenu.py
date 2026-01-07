@@ -3,6 +3,7 @@ from .ordersystem import Managingorders
 from .billingsystem import Generatesbill
 from ..model.models import PathModel
 from .filehandler import Createfile
+from datetime import datetime
 from ..logs.logger import get_logger 
 class Menustaff:
     staff_logger = get_logger(PathModel.staff_menu_logs, "staffmenu")
@@ -104,14 +105,27 @@ class Menustaff:
 
                     for b in booked_data:
                         if b["booking_id"] == booking_id:
-                            matched_booking = b
+                            for t in b.get("tables", []):
+                                date_str = t.get("date")               
+                                time_slot = t.get("time_slot")        
+                                if date_str and time_slot:
+                                    try:
+                                        end_time_str = time_slot.split(" - ")[1]  
+                                        booking_end_datetime = datetime.strptime(
+                                            f"{date_str} {end_time_str}", "%Y-%m-%d %H:%M"
+                                        )
+                                        if booking_end_datetime > datetime.now():
+                                            matched_booking = b
+                                            break
+                                    except Exception as e:
+                                        Menustaff.staff_logger.exception(f"Error parsing booking time: {e}")
                             break
 
                     if matched_booking:
-                        print(f" Advance booking loaded for ID: {booking_id}")
+                        print(f"Advance booking loaded for ID: {booking_id}")
                         return matched_booking
                     else:
-                        print(" Booking ID not found or expired!")
+                        print("Booking ID not found or expired!")
                         return None
 
                 elif sub_choice == 3:
