@@ -33,16 +33,12 @@ class Menuadmin:
                     continue
 
                 if choice == 1:
-                    print("\n--- Menu Management ---")
                     Menumanagment.manage_menu()
                 elif choice == 2:
-                    print("\n--- order Management ---")
                     Ordermanaingsystem.order_managment()
                 elif choice == 3:
-                    print("\n--- Inventory Management ---")
                     InventoryMainMenu.main_menu()
                 elif choice == 4:
-                    print("\n--- Report System ---")
                     ReportGenerator.report_menu()
                 elif choice == 5:
                     print("Exiting Admin Dashboard. Goodbye!")

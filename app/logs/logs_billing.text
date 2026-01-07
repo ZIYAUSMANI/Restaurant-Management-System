@@ -4,3 +4,14 @@ Traceback (most recent call last):
     payment_method, payment_details = self.choose_payment_method()
     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 TypeError: cannot unpack non-iterable NoneType object
+2026-01-07 21:12:12,467 | ERROR | billing | UNEXPECTED ERROR IN Generatesbill| Error: Validationcheck.validate_expiry_date() missing 1 required positional argument: 'purchase_date'
+Traceback (most recent call last):
+  File "c:\indixpert\python_project\app\domain\billingsystem.py", line 120, in choose_payment_method
+    expiry_date = validation_check.validate_expiry_date(input("Enter Expiry Date (MM/YY): ").strip())
+TypeError: Validationcheck.validate_expiry_date() missing 1 required positional argument: 'purchase_date'
+2026-01-07 21:12:12,472 | ERROR | billing | UNEXPECTED ERROR IN Generatesbill| Error: cannot unpack non-iterable NoneType object
+Traceback (most recent call last):
+  File "c:\indixpert\python_project\app\domain\billingsystem.py", line 154, in show_bill
+    payment_method, payment_details = self.choose_payment_method()
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: cannot unpack non-iterable NoneType object

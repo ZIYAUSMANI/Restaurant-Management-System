@@ -117,7 +117,7 @@ class Generatesbill:
             elif payment_method in ("Credit Card", "Debit Card"):
                 card_name = validation_check.name_check(input("Enter Cardholder Name: ").strip(),"Enter Cardholder Name:")
                 card_number = validation_check.validate_card_number(input("Enter Card Number: ").strip())
-                expiry_date = validation_check.validate_expiry_date(input("Enter Expiry Date (MM/YY): ").strip())
+                expiry_date = validation_check.expiry_date(input("Enter Expiry Date (MM/YY): ").strip())
                 cvv = validation_check.validate_cvv(input("Enter CVV: ").strip())
                 payment_details = {
                     "card_name": card_name,

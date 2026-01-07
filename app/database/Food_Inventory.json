@@ -32,30 +32,6 @@
         "expiry_date": "2026-02-10"
     },
     {
-        "name": "Chicken",
-        "quantity": 25,
-        "unit": "kg",
-        "reorder_level": 10,
-        "purchase_date": "2026-01-01",
-        "expiry_date": "2026-01-07"
-    },
-    {
-        "name": "Mutton",
-        "quantity": 15,
-        "unit": "kg",
-        "reorder_level": 5,
-        "purchase_date": "2026-01-01",
-        "expiry_date": "2026-01-06"
-    },
-    {
-        "name": "Fish",
-        "quantity": 10,
-        "unit": "kg",
-        "reorder_level": 5,
-        "purchase_date": "2026-01-02",
-        "expiry_date": "2026-01-05"
-    },
-    {
         "name": "Eggs",
         "quantity": 200,
         "unit": "pieces",
@@ -86,14 +62,6 @@
         "reorder_level": 10,
         "purchase_date": "2026-01-01",
         "expiry_date": "2026-01-20"
-    },
-    {
-        "name": "Milk",
-        "quantity": 50,
-        "unit": "liters",
-        "reorder_level": 20,
-        "purchase_date": "2026-01-01",
-        "expiry_date": "2026-01-05"
     },
     {
         "name": "Cheese",

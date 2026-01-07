@@ -432,5 +432,116 @@
         "subtotal": 120,
         "gst": 6,
         "grand_total": 176
+    },
+    {
+        "date": "07-01-2026",
+        "time": "09:04 PM",
+        "payment_method": "UPI",
+        "payment_details": {
+            "upi_id": "sadiya@uip.gp"
+        },
+        "tables": [],
+        "items": [
+            {
+                "id": "80",
+                "item_name": "Kaju Katli",
+                "quantity": 2,
+                "price": 25,
+                "total": 50
+            }
+        ],
+        "seat_charge": 0,
+        "subtotal": 50,
+        "gst": 2,
+        "grand_total": 52
+    },
+    {
+        "date": "07-01-2026",
+        "time": "09:09 PM",
+        "payment_method": "Cash",
+        "payment_details": {},
+        "tables": [
+            {
+                "table_no": 1,
+                "seats_booked": 2
+            }
+        ],
+        "items": [
+            {
+                "id": "3",
+                "item_name": "Masala Dosa",
+                "quantity": 2,
+                "price": 60,
+                "total": 120
+            },
+            {
+                "id": "28",
+                "item_name": "Milk",
+                "quantity": 1,
+                "price": 60,
+                "total": 60
+            }
+        ],
+        "seat_charge": 100,
+        "subtotal": 180,
+        "gst": 9,
+        "grand_total": 289
+    },
+    {
+        "date": "07-01-2026",
+        "time": "09:17 PM",
+        "payment_method": "Credit Card",
+        "payment_details": {
+            "card_name": "sohel",
+            "card_number": "13214546867978",
+            "expiry_date": "2/27",
+            "cvv": "1234"
+        },
+        "tables": [
+            {
+                "date": "2026-01-07",
+                "time_slot": "20:00 - 22:00",
+                "table_no": 2,
+                "seats_booked": 1
+            }
+        ],
+        "items": [
+            {
+                "id": "4",
+                "item_name": "Poha",
+                "quantity": 1,
+                "price": 55,
+                "total": 55
+            }
+        ],
+        "seat_charge": 50,
+        "subtotal": 55,
+        "gst": 2,
+        "grand_total": 107
+    },
+    {
+        "date": "07-01-2026",
+        "time": "09:20 PM",
+        "payment_method": "Credit Card",
+        "payment_details": {
+            "card_name": "asdff",
+            "card_number": "1234256789867",
+            "expiry_date": "2/27",
+            "cvv": "123"
+        },
+        "tables": [],
+        "items": [
+            {
+                "id": "91",
+                "item_name": "Iced Tea",
+                "quantity": 1,
+                "price": 45,
+                "total": 45
+            }
+        ],
+        "seat_charge": 0,
+        "subtotal": 45,
+        "gst": 2,
+        "grand_total": 47
     }
 ]

@@ -182,7 +182,7 @@ class Validationcheck:
             print("Invalid Card Number! It should be 13-19 digits.")
             card_number = input("Enter Card Number:").strip()
 
-    def validate_expiry_date(self,expiry_date):
+    def expiry_date(self,expiry_date):
         while True:
             try:
                 exp_month, exp_year = expiry_date.split("/")
@@ -196,8 +196,9 @@ class Validationcheck:
                 else:
                     raise ValueError
             except ValueError:
-                expiry_date = input("Enter Expiry Date (MM/YY):").strip()
                 print("Invalid Expiry Date! Ensure MM/YY format and not expired.")
+                expiry_date = input("Enter Expiry Date (MM/YY):").strip()
+              
 
     def validate_cvv(self, cvv):
         while True:

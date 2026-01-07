@@ -40,22 +40,12 @@ class Menustaff:
                     continue
 
                 if choice == 1:
-                    print("\n" + "-"*50)
-                    print("   Table Booking & Order Menu")
-                    print("-"*50)
                     Menustaff.tablebooking_takeordermenu()
                 elif choice == 2:
-                    print("\n" + "-"*50)
-                    print("         Advance Table Booking")
-                    print("-"*50)
                     ob = Booktable()
                     ob.run_menu()
                 elif choice == 3:
-                    print("\n" + "-"*50)
-                    print("           PACKED ORDER MENU")
-                    print("-"*50)
                     Menustaff.packed_order_menu()
-
                 elif choice == 4:
                     print("Exiting Staff Dashboard. Goodbye!")
                     break

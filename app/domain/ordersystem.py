@@ -114,7 +114,7 @@ class Managingorders:
             selected_item = None
             for meal in food_data:
                 for _, categories in meal.items():
-                    for category_name,items in categories.items():
+                    for _,items in categories.items():
                         for item in items:
                             if item["item_name"].lower() == order_name.lower():
                                 selected_item = item
@@ -134,7 +134,6 @@ class Managingorders:
 
             order.item_name = order_name
             order.quantity = check.quantity_chcek(input("Enter the quantity: "))
-            print("\n")
             available_sizes = []
             for s in selected_item["size"]:
                 print(f"- {s['name']} (₹{s['price']})")
