@@ -19,6 +19,7 @@ class PathModel:
     table_booked=r"C:\indixpert\python_project\app\database\tablebooking.json"
     bill_data=r"C:\indixpert\python_project\app\database\billdata.json"
     order_data=r"C:\indixpert\python_project\app\database\orderdata.json"
+    inventory_data=r"C:\indixpert\python_project\app\database\Food_Inventory.json"
     athu_log=r"C:\indixpert\python_project\app\logs\logs_of_authentication.text"
     menu_log=r"C:\indixpert\python_project\app\logs\logs_foodmenu.text"
     order_log=r"C:\indixpert\python_project\app\logs\logs_order.text"
@@ -27,6 +28,8 @@ class PathModel:
     bill_logs=r"C:\indixpert\python_project\app\logs\logs_billing.text"
     report_logs=r"C:\indixpert\python_project\app\logs\logs_report.text"
     admin_menu_logs=r"C:\indixpert\python_project\app\logs\logs_adminmenu.text"
+    inventory_logs=r"C:\indixpert\python_project\app\logs\logs_inventory.text"
+    furniture_inventory_data=r"C:\indixpert\python_project\app\database\ furniture_inventory_data.json"
 
 class FoodItemModel:
     id = None
@@ -67,3 +70,19 @@ class BookingModel:
 class TableModel:
     table_no = None
     total_seats = None
+
+class InventoryItemModel:
+    name = None
+    quantity = None
+    unit = None
+    reorder_level = None
+    purchase_date = None
+    expiry_date = None
+
+class FurnitureItemModel:
+    name = None
+    quantity = None
+    material = None
+    reorder_level = None
+    purchase_date = None
+    warranty_end = None

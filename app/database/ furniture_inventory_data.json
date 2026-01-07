@@ -1,0 +1,82 @@
+[
+    {
+        "name": "Office Chair",
+        "quantity": 10,
+        "material": "Wood",
+        "reorder_level": 5,
+        "purchase_date": "2024-02-10",
+        "warranty_end": "2027-02-10"
+    },
+    {
+        "name": "Dining Table",
+        "quantity": 4,
+        "material": "Wood",
+        "reorder_level": 2,
+        "purchase_date": "2023-05-15",
+        "warranty_end": "2028-05-15"
+    },
+    {
+        "name": "Bar Stool",
+        "quantity": 12,
+        "material": "Metal",
+        "reorder_level": 6,
+        "purchase_date": "2024-03-01",
+        "warranty_end": "2027-03-01"
+    },
+    {
+        "name": "Coffee Table",
+        "quantity": 5,
+        "material": "Glass",
+        "reorder_level": 2,
+        "purchase_date": "2023-06-10",
+        "warranty_end": "2026-06-10"
+    },
+    {
+        "name": "Restaurant Bench",
+        "quantity": 6,
+        "material": "Wood",
+        "reorder_level": 3,
+        "purchase_date": "2023-07-20",
+        "warranty_end": "2027-07-20"
+    },
+    {
+        "name": "Storage Shelf",
+        "quantity": 8,
+        "material": "Metal",
+        "reorder_level": 4,
+        "purchase_date": "2023-08-05",
+        "warranty_end": "2028-08-05"
+    },
+    {
+        "name": "Outdoor Patio Chair",
+        "quantity": 15,
+        "material": "Plastic",
+        "reorder_level": 7,
+        "purchase_date": "2024-01-15",
+        "warranty_end": "2026-01-15"
+    },
+    {
+        "name": "Outdoor Patio Table",
+        "quantity": 5,
+        "material": "Plastic",
+        "reorder_level": 2,
+        "purchase_date": "2024-01-20",
+        "warranty_end": "2026-01-20"
+    },
+    {
+        "name": "Bar Counter",
+        "quantity": 1,
+        "material": "Wood",
+        "reorder_level": 1,
+        "purchase_date": "2023-03-12",
+        "warranty_end": "2030-03-12"
+    },
+    {
+        "name": "High Chair for Kids",
+        "quantity": 2,
+        "material": "Wood",
+        "reorder_level": 3,
+        "purchase_date": "2024-04-10",
+        "warranty_end": "2027-04-10"
+    }
+]

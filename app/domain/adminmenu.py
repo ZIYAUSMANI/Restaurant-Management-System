@@ -1,6 +1,7 @@
 from ..menu.menusystem import Menumanagment
 from ..domain.ordermanagment import Ordermanaingsystem
 from ..report.report import ReportGenerator
+from ..inventory.inventory_main_menu import InventoryMainMenu
 from ..model.models import PathModel
 from ..logs.logger import get_logger
 class Menuadmin:
@@ -39,6 +40,7 @@ class Menuadmin:
                     Ordermanaingsystem.order_managment()
                 elif choice == 3:
                     print("\n--- Inventory Management ---")
+                    InventoryMainMenu.main_menu()
                 elif choice == 4:
                     print("\n--- Report System ---")
                     ReportGenerator.report_menu()

@@ -112,41 +112,8 @@ class Validationcheck:
                 department = input("\nEnter your department: ")
             else:
                 return department
-
    
-    def past_experience_check(self, pastexperience):
-        pattern = r'^([0-9]+)\s*year[s]?$'
-        while True:
-            pastexperience = pastexperience.strip()
-            
-            if not pastexperience:
-                print("Invalid past experience!")
-                pastexperience = input("Enter your past experience (e.g., 2 year): ")
-                continue
-            
-            match = re.fullmatch(pattern, pastexperience, re.IGNORECASE)
-            if match:
-                number = match.group(1)
-                if int(number) > 1:
-                    return number + " years"
-                else:
-                    return number + " year"
-            
-            if pastexperience.isdigit():
-                number = pastexperience
-                if int(number) > 1:
-                    return number + " years"
-                else:
-                    return number + " year"
-            
-            print("Invalid past experience!")
-            pastexperience = input("Enter your past experience (e.g., 2 year): ")
-
     def date_check(self,date_value):
-        """
-        Validates date input in YYYY-MM-DD format.
-        Accepts only years between 2000 and current year.
-        """
         min_year = 2000
         max_year = datetime.now().year
 
@@ -187,20 +154,6 @@ class Validationcheck:
                 return quantity
 
             quantity = input("\nEnter your quantity = ")
-
-    def category_check(self, category):
-        allowed = ["Veg", "Non_Veg", "Fast Food", "Drink", "Roti"]
-
-        while True:
-            category = category.strip().title()
-
-            if category in allowed:
-                return category
-            else:
-                print("Invalid category!")
-                print("Allowed: Veg, Non_Veg, Fast Food, Drink, Roti")
-                category = input("enter category of item = ")
-
         
     def price_check(self, price,prompt):
         while True:
@@ -263,3 +216,91 @@ class Validationcheck:
             print("Invalid UPI ID! Must contain '@' and valid characters.")
             upi_id = input("Enter UPI ID:").strip()
 
+    def validate_quantity(self, quantity):
+        while True:
+            try:
+                quantity = float(quantity)
+
+                if quantity > 0:
+                    return quantity
+                else:
+                    print("Invalid quantity! Must be greater than 0.")
+                    quantity = input("Enter quantity: ")
+
+            except ValueError:
+                print("Invalid input! Quantity must be a number.")
+                quantity = input("Enter quantity: ")
+
+    def validate_unit(self,unit):
+        while True:
+            
+            if unit in ["kg", "liters", "pieces"]:
+                return unit
+            else:
+                print("Invalid unit! Choose kg, liters, or pieces.")
+                unit = input("Enter unit (kg / liters / pieces): ").strip().lower()
+
+    def validate_reorder_level(self, reorder_level, quantity):
+        while True:
+            try:
+                reorder_level = float(reorder_level)
+
+                if reorder_level > 0 and reorder_level <= quantity:
+                    return reorder_level
+                else:
+                    print("Invalid reorder level! Must be > 0 and ≤ quantity.")
+                    reorder_level = input("Enter reorder level: ")
+
+            except ValueError:
+                print("Invalid input! Reorder level must be a number.")
+                reorder_level = input("Enter reorder level: ")
+
+        
+
+    def validate_purchase_date(self, purchase_date):
+        while True:
+            try:
+                purchase = datetime.strptime(purchase_date, "%Y-%m-%d")
+                today = datetime.now()
+
+                if purchase > today:
+                    print("Purchase date cannot be in the future.")
+                    purchase_date = input("Enter purchase date (YYYY-MM-DD): ")
+                else:
+                    return purchase_date
+
+            except ValueError:
+                print("Invalid date format! Use YYYY-MM-DD.")
+                purchase_date = input("Enter purchase date (YYYY-MM-DD): ")
+
+    def validate_expiry_date(self, expiry_date, purchase_date):
+        while True:
+            try:
+                expiry = datetime.strptime(expiry_date, "%Y-%m-%d")
+                purchase = datetime.strptime(purchase_date, "%Y-%m-%d")
+                today = datetime.now()
+
+                if expiry <= purchase:
+                    print("Expiry date must be AFTER purchase date.")
+                    expiry_date = input("Enter expiry date (YYYY-MM-DD): ")
+
+                elif expiry <= today:
+                    print("Expiry date must be a future date.")
+                    expiry_date = input("Enter expiry date (YYYY-MM-DD): ")
+
+                else:
+                    return expiry_date
+
+            except ValueError:
+                print("Invalid date format! Use YYYY-MM-DD.")
+                expiry_date = input("Enter expiry date (YYYY-MM-DD): ")
+
+    def validate_material(self, material):
+        while True:
+            if material.lower() in ["wood", "metal", "plastic", "glass"]:
+                return material.lower()
+            else:
+                print("Invalid material! Choose wood, metal, plastic, or glass.")
+                material = input(
+                    "Enter material (wood / metal / plastic / glass): "
+                ).strip()
