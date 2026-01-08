@@ -194,8 +194,8 @@ class Menumanagment:
             item_name = check.name_check(input("Enter the name of the item to delete = "), "Enter item name = ").title()
 
             for data in food_menu:
-                for categories in data.values():  # Scan all meals
-                    for cat_list in categories.values():  # Scan all categories
+                for categories in data.values(): 
+                    for cat_list in categories.values():  
                         for item in cat_list:
                             if item["item_name"].lower() == item_name.lower():
                                 cat_list.remove(item)
